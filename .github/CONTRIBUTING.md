@@ -23,7 +23,7 @@ python3 scripts/validate.py
 
 ## What belongs here
 
-Public company facts only. Never invent a row. No personal names, emails, or phone numbers. The validator rejects emails and phone numbers. No job postings yet.
+Public company facts only. Never invent a row. No personal names, emails, or phone numbers. The validator rejects emails and phone numbers. No job postings yet. Prefer the company's own website as `source_url`, and never cite a page behind a login or paywall. Never rename or reuse an `id`. No emoji, and keep wording neutral.
 
 A public source is a page anyone can open without logging in, such as a company About or Locations page.
 
