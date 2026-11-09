@@ -9,7 +9,7 @@ This repo is a public dataset of companies by region. Read `README.md` for the c
 - The pull request body names its issue on its own line, as `Part of #N`. Add `Closes #N` when the pull request finishes the issue.
 - Keep each pull request to one change, such as one region or one fix.
 - Do not create tags. Do not force-push or rewrite pushed history.
-- Releases stay on the 0.0.x line, and one is cut only when Edward says so.
+- A release is cut only when Edward says so.
 
 ## Data
 
