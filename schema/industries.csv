@@ -1,0 +1,44 @@
+industry,field,label
+aerospace-defense,avionics,Avionics
+aerospace-defense,defense-electronics,Defense electronics
+aerospace-defense,launch-vehicles,Launch vehicles
+aerospace-defense,space-systems,Spacecraft and space systems
+aerospace-defense,uncrewed-systems,Uncrewed aircraft and vehicles
+automotive,electric-vehicles,Electric vehicles and drivetrains
+automotive,vehicle-electronics,Vehicle electronics
+construction-engineering,building-systems,Building electrical and controls engineering
+construction-engineering,engineering-services,Engineering consulting and design services
+consumer-products,consumer-electronics,Consumer electronics
+education-research,national-lab,National or federal laboratory
+education-research,university,University or research institute
+electronics,contract-manufacturing,Electronics contract manufacturing
+electronics,electronic-components-distribution,Electronic components distribution
+electronics,pcb,Printed circuit boards and assembly
+electronics,power-electronics,Power electronics
+electronics,rf-microwave,RF and microwave
+electronics,test-measurement,Test and measurement
+energy-utilities,electric-utility,Electric utility
+energy-utilities,energy-storage,Energy storage
+energy-utilities,oil-gas,Oil and gas
+energy-utilities,solar,Solar
+energy-utilities,wind,Wind
+government,federal,Federal agency
+government,state-local,State or local government
+healthcare,medical-devices,Medical devices
+industrial,automation-controls,Industrial automation and controls
+industrial,machinery,Industrial machinery
+industrial,robotics,Robotics
+mining-materials,materials,Materials and chemicals
+mining-materials,mining,Mining
+semiconductors,design,Chip design
+semiconductors,equipment,Semiconductor equipment
+semiconductors,fabrication,Fabrication and packaging
+software-it,cloud-infrastructure,Cloud and data center infrastructure
+software-it,cybersecurity,Cybersecurity
+software-it,embedded-software,Embedded and firmware
+software-it,enterprise-software,Enterprise software
+telecommunications,network-equipment,Network equipment
+telecommunications,satellite-communications,Satellite communications
+telecommunications,wireless-carrier,Wireless and broadband carrier
+transportation,rail,Rail
+transportation,transit,Public transit

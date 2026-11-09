@@ -1,0 +1,31 @@
+name: Check
+
+# Validates every data file on each pull request into main and on each push to main.
+# The protect-main ruleset requires the Validate data job by its name. Keep the name.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A newer push to the same pull request or branch cancels the older run.
+concurrency:
+  group: check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate data
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Standard library only, so there is nothing to install.
+      - name: Validate data
+        run: python3 scripts/validate.py

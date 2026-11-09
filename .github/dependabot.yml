@@ -1,0 +1,15 @@
+# Monthly and grouped, so the actions open at most one pull request a month.
+# The validator uses only the Python standard library, so there is no pip entry.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    target-branch: main
+    labels:
+      - dependencies
+    groups:
+      github-actions:
+        patterns:
+          - '*'
