@@ -4,6 +4,10 @@ A plain list of companies by region: name, website, industry, field, city, state
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `data/company-lists`.
 
+For students and new graduates looking for employers near them, starting with electrical and computer engineering.
+
+To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source.
+
 ## Layout
 
 | Path | What it is |
