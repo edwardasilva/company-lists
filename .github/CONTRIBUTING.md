@@ -12,7 +12,7 @@ Every change starts as a GitHub issue. Status lives on the project board, not in
 2. Edit the region file, such as `data/us/co/denver.csv`. For a new region, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
 3. For each row, open a public page that states the company name and city, put it in `source_url`, and set `last_verified` to today.
 4. Keep rows sorted by `id`.
-5. Run `python3 scripts/validate.py` and fix anything it reports.
+5. Run `python3 scripts/validate.py` before every push, and push only when it passes.
 6. Open a pull request into `main`. Its body names the issue on its own line, as `Part of #12`.
 
 Every merge is a squash merge, and the branch is deleted when it merges. Do not push straight to `main`.
@@ -23,6 +23,10 @@ Every merge is a squash merge, and the branch is deleted when it merges. Do not 
 - No personal contact details: no personal names, email addresses, or phone numbers. The validator rejects email addresses and phone numbers.
 - No job postings yet.
 - Optional cells stay empty unless a source states the value.
+- Prefer the company website as `source_url`, and never cite a page behind a login or paywall.
+- Never rename or reuse an `id`.
+- Use only `industry` and `field` values from `schema/industries.csv`.
+- No emoji. Keep wording neutral, and use names such as Alex Doe with they and them in examples.
 
 To add an `industry` or `field` value, add it to `schema/industries.csv` in sorted order in the same pull request, and say why.
 
