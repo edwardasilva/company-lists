@@ -1,43 +1,36 @@
 # Contributing
 
-This page covers how a company gets into the list.
+Thanks for helping with the company list. Anyone can add or fix a company.
 
-## Start with an issue
+## Suggest a change
 
-Every change starts as a GitHub issue. Status lives on the project board, not in a comment thread.
+Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and pick a template. Say which company, which metro, and what is wrong or missing.
 
-## Add or change rows
+## Add or fix a company
 
-1. Cut a short branch from `main`.
-2. Edit the region file, such as `data/us/co/denver.csv`. For a new region, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
-3. For each row, open a public page that states the company name and city, put it in `source_url`, and set `last_verified` to today.
-4. Keep rows sorted by `id`.
-5. Run `python3 scripts/validate.py` before every push, and push only when it passes.
-6. Open a pull request into `main`. Its body names the issue on its own line, as `Part of #12`.
+1. Fork the repo (or cut a short branch if you have write access).
+2. Edit the metro file, such as `data/us/co/denver.csv`. For a new metro, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
+3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
+4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount.
+5. Keep rows sorted by `id`.
+6. Run the check and fix anything it reports:
 
-Every merge is a squash merge, and the branch is deleted when it merges. Do not push straight to `main`.
+```bash
+python3 scripts/validate.py
+```
+
+7. Open a pull request into `main`.
 
 ## What belongs here
 
-- Companies, with public facts from a public source. Never invent a row or a value.
-- No personal contact details: no personal names, email addresses, or phone numbers. The validator rejects email addresses and phone numbers.
-- No job postings yet.
-- Optional cells stay empty unless a source states the value.
-- Prefer the company website as `source_url`, and never cite a page behind a login or paywall.
-- Never rename or reuse an `id`.
-- Use only `industry` and `field` values from `schema/industries.csv`.
-- No emoji. Keep wording neutral, and use names such as Alex Doe with they and them in examples.
+Public company facts only. Never invent a row. No personal names, emails, or phone numbers. The validator rejects emails and phone numbers. No job postings yet. Prefer the company's own website as `source_url`, and never cite a page behind a login or paywall. Never rename or reuse an `id`. No emoji, and keep wording neutral.
 
-To add an `industry` or `field` value, add it to `schema/industries.csv` in sorted order in the same pull request, and say why.
+A public source is a page anyone can open without logging in, such as a company About or Locations page.
 
-## Working with Claude
+## Conduct
 
-Claude Code can take an issue to a pull request. `.github/workflows/claude.yml` runs it, and only the repo owner can start it, with the `claude` label or an `@claude` comment. Claude works on a `claude/` branch, runs the validator before it pushes, and never merges, pushes to `main`, tags, or cuts a release.
-
-## Checks
-
-The Check workflow runs `scripts/validate.py` on every pull request into `main` and on every push to `main`. The `protect-main` ruleset requires its `Validate data` job. Dependabot opens one grouped pull request a month for the workflow actions.
+Be kind and assume good intent. To report a problem with someone's behavior, use GitHub's Report content feature or message the repository owner in private.
 
 ## License
 
-By contributing, you agree that data you add is licensed under [CC BY 4.0](../LICENSE-CONTENT) and code under the [MIT License](../LICENSE). README has the split.
+By contributing, you agree that data you add is licensed under [CC BY 4.0](../LICENSE-CONTENT) and code under the [MIT License](../LICENSE).
