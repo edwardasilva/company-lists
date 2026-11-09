@@ -47,7 +47,7 @@ One row per line keeps diffs small and reviewable, and GitHub shows each file as
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, duplicate websites, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request and on every push to `main`.
+It checks the header, required cells, allowed values, URLs, unique ids, sorted order, duplicate websites, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 ## Rules
 
