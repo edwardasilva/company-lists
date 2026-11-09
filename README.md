@@ -1,6 +1,6 @@
 # company-lists
 
-A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro. It lists companies only. It does not hold job postings.
+A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro, and it lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `data/company-lists`.
 
@@ -39,7 +39,7 @@ Rows are sorted by `id`. A company with sites in two regions gets a row in each 
 
 ## Why CSV
 
-One row per line keeps diffs small and reviewable, and GitHub shows each file as a table. Any spreadsheet, database or script reads it with no extra tools. Splitting by region keeps each file small as the list grows to thousands of rows, and two people adding different regions never touch the same file.
+One row per line keeps diffs small, and GitHub shows each file as a table. Splitting by region keeps each file small, and two people adding different regions never touch the same file.
 
 ## Check the data
 
