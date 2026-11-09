@@ -1,7 +1,12 @@
 id,name,website,industry,field,city,state,region,country,hq,size_band,ee_relevant,source_url,last_verified,notes
+alchemer,Alchemer,https://www.alchemer.com/,software-it,enterprise-software,Louisville,CO,Boulder,US,true,,true,https://www.alchemer.com/support/,2026-11-09,
+automox,Automox,https://www.automox.com/,software-it,cybersecurity,Boulder,CO,Boulder,US,false,,true,https://www.automox.com/contact-us,2026-11-09,Boulder mailing address on company contact page.
 bae-systems-boulder,BAE Systems,https://www.baesystems.com/,aerospace-defense,space-systems,Broomfield,CO,Boulder,US,true,,true,https://jobs.baesystems.com/global/en/life-in-colorado,2026-11-09,Space and Mission Systems headquarters.
 blue-canyon-technologies,Blue Canyon Technologies,https://www.bluecanyontech.com/,aerospace-defense,space-systems,Lafayette,CO,Boulder,US,true,,true,https://www.bluecanyontech.com/company/,2026-11-09,Part of RTX.
+conga,Conga,https://conga.com/,software-it,enterprise-software,Broomfield,CO,Boulder,US,true,,true,https://conga.com/privacy,2026-11-09,
+exabeam,Exabeam,https://www.exabeam.com/,software-it,cybersecurity,Broomfield,CO,Boulder,US,false,,true,https://www.exabeam.com/contact/,2026-11-09,Includes former LogRhythm; Broomfield office on company contact page.
 freewave,FreeWave Technologies,https://www.freewave.com/,electronics,rf-microwave,Boulder,CO,Boulder,US,true,,true,https://www.freewave.com/contact/,2026-11-09,
+jumpcloud,JumpCloud,https://jumpcloud.com/,software-it,cybersecurity,Louisville,CO,Boulder,US,true,,true,https://jumpcloud.com/contact,2026-11-09,
 mma-space,MMA Space,https://www.mmaspace.com/,aerospace-defense,space-systems,Broomfield,CO,Boulder,US,true,,true,https://www.mmaspace.com/,2026-11-09,Formerly MMA Design.
 orbit-fab,Orbit Fab,https://www.orbitfab.com/,aerospace-defense,space-systems,Lafayette,CO,Boulder,US,true,,true,https://www.orbitfab.com/contact/,2026-11-09,
 qsc-systems,QSC Systems,https://www.qscsystems.com/,electronics,contract-manufacturing,Longmont,CO,Boulder,US,true,,true,https://www.qscsystems.com/contact.html,2026-11-09,
@@ -9,3 +14,4 @@ raven-space-systems,Raven Space Systems,https://www.ravenspacesystems.com/,aeros
 redwire-boulder,Redwire,https://rdw.com/,electronics,rf-microwave,Longmont,CO,Boulder,US,false,,true,https://rdw.com/locations/longmont/,2026-11-09,RF products facility.
 sierra-space,Sierra Space,https://www.sierraspace.com/,aerospace-defense,space-systems,Louisville,CO,Boulder,US,true,,true,https://www.sierraspace.com/contact/,2026-11-09,
 tendeg,Tendeg,https://www.tendeg.com/,aerospace-defense,space-systems,Louisville,CO,Boulder,US,true,,true,https://www.tendeg.com/contact/,2026-11-09,
+zayo,Zayo,https://www.zayo.com/,telecommunications,,Boulder,CO,Boulder,US,true,,true,https://www.zayo.com/about/investors/,2026-11-09,Fiber and network infrastructure.
