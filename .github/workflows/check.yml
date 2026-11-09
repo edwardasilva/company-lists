@@ -1,11 +1,10 @@
 name: Check
 
-# Validates every data file on each pull request into main and on each push to main.
+# Validates every data file on each pull request into main. It does not run again on the push
+# to main: each change lands as a squash merge of a pull request that already passed.
 # The protect-main ruleset requires the Validate data job by its name. Keep the name.
 on:
   pull_request:
-    branches: [main]
-  push:
     branches: [main]
 
 permissions:
