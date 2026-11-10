@@ -46,6 +46,7 @@ lumen,Lumen,https://www.lumen.com/,telecommunications,,Denver,CO,Denver,US,false
 lunar-outpost,Lunar Outpost,https://www.lunaroutpost.com/,aerospace-defense,space-systems,Golden,CO,Denver,US,true,,true,https://www.lunaroutpost.com/united-states,2026-11-09,
 martin-martin,Martin/Martin,https://www.martinmartin.com/,construction-engineering,engineering-services,Denver,CO,Denver,US,true,,,https://www.martinmartin.com/contact/,2026-11-10,Contact page marks the Denver office as headquarters; also Fort Collins and Vail.
 merrick,Merrick & Company,https://www.merrick.com/,construction-engineering,engineering-services,Greenwood Village,CO,Denver,US,true,,,https://www.merrick.com/locations/,2026-11-10,Corporate headquarters on the locations page.
+national-laboratory-of-the-rockies,National Laboratory of the Rockies,https://www.nlr.gov/,education-research,national-lab,Golden,CO,Denver,US,false,,,https://www.energy.gov/eere/articles/energy-department-renames-nrel-national-lab-rockies,2026-11-10,Formerly the National Renewable Energy Laboratory (NREL).
 newmont,Newmont,https://www.newmont.com/,mining-materials,mining,Denver,CO,Denver,US,true,,,https://www.newmont.com/about-us/contact-us/default.aspx,2026-11-10,Corporate headquarters on the contact page.
 nexus-pcb,NexusPCB Technologies,https://www.nexuspcb.com/,electronics,pcb,Littleton,CO,Denver,US,true,,true,https://www.nexuspcb.com/about-us,2026-11-09,
 niocorp,NioCorp Developments,https://www.niocorp.com/,mining-materials,mining,Centennial,CO,Denver,US,true,,,https://www.niocorp.com/contact/,2026-11-10,U.S. corporate headquarters on the contact page.
@@ -89,6 +90,7 @@ ttm-technologies,TTM Technologies,https://www.ttm.com/,electronics,pcb,Littleton
 united-launch-alliance,United Launch Alliance,https://www.ulalaunch.com/,aerospace-defense,launch-vehicles,Denver,CO,Denver,US,true,,true,https://www.ulalaunch.com/about,2026-11-09,
 united-power,United Power,https://www.unitedpower.com/,energy-utilities,electric-utility,Brighton,CO,Denver,US,true,,true,https://www.unitedpower.com/contact-us,2026-11-09,
 urban-sky,Urban Sky,https://urbansky.com/,aerospace-defense,uncrewed-systems,Denver,CO,Denver,US,true,,true,https://urbansky.com/contact/,2026-11-09,
+usbr-technical-service-center,Bureau of Reclamation Technical Service Center,https://www.usbr.gov/,government,federal,Denver,CO,Denver,US,false,,true,https://www.usbr.gov/tsc/,2026-11-10,At the Denver Federal Center.
 vantor,Vantor,https://vantor.com/,aerospace-defense,space-systems,Westminster,CO,Denver,US,true,,true,https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QRAA19D002V&contractorName=VANTOR+INC.&executeQuery=YES,2026-11-09,Formerly Maxar Intelligence.
 vestas,Vestas,https://www.vestas.com/,energy-utilities,wind,Brighton,CO,Denver,US,false,,true,https://www.vestas.com/en/about/our-locations/production,2026-11-09,Nacelles America facility; also blades facility in Windsor.
 voyager-technologies,Voyager Technologies,https://voyagertechnologies.com/,aerospace-defense,space-systems,Denver,CO,Denver,US,true,,true,https://voyagertechnologies.com/contact/,2026-11-09,
