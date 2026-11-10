@@ -8,6 +8,7 @@
     "id",
     "name",
     "website",
+    "careers_url",
     "industry",
     "field",
     "city",
@@ -25,6 +26,7 @@
     "id",
     "name",
     "website",
+    "careers_url",
     "industry",
     "field",
     "city",
@@ -69,6 +71,12 @@
       "type": "string",
       "pattern": "^https://[^\\s/@]+\\.[^\\s/@]+/$",
       "description": "Company home page, https, ending in a slash, no path."
+    },
+    "careers_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(https://[^\\s/@]+\\.[^\\s/@]+(/[^\\s]*)?)?$",
+      "description": "Optional. The company's own careers or jobs page, https, not a job board."
     },
     "industry": {
       "type": "string",
