@@ -10,6 +10,8 @@ Which companies belong is in [CONTRIBUTING](.github/CONTRIBUTING.md#which-compan
 
 To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source.
 
+AI tools were used to help build this list. Please check any row you rely on against its `source_url`, and send a fix when you find one.
+
 ## Layout
 
 | Path | What it is |
@@ -42,7 +44,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
-| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD`, in UTC |
+| `last_verified` | yes | The day the row was checked against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
 A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont and Louisville. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Westminster and Wheat Ridge. `Austin` covers Austin and Round Rock. `Houston` covers Houston and Spring. `Los Angeles` covers Costa Mesa, El Segundo, Long Beach, Los Angeles, Pasadena, Redondo Beach and Rosemead. `San Francisco` covers Berkeley, Cupertino, Fremont, Livermore, Menlo Park, Mountain View, Oakland, San Jose, Santa Clara, Stanford and Sunnyvale. `Northern Virginia` covers Alexandria, Ashburn, Chantilly, Fairfax, Falls Church, Herndon, Manassas, McLean and Reston. To add a city, add it here in the same pull request as its first row.
@@ -63,7 +65,7 @@ It checks the header, required cells, allowed values, URLs, unique ids, sorted o
 
 ## Rules
 
-- Never invent data. Every row cites a public page, and `last_verified` says when someone checked it.
+- Never invent data. Every row cites a public page, and `last_verified` says when the row was checked.
 - Public company information only. No personal names, emails, or phone numbers.
 - Every change reaches `main` through a pull request, and every merge is a squash merge.
 
