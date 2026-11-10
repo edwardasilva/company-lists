@@ -10,6 +10,8 @@ Use the `claude` label, or comment `@claude`, for harder work: medium or high se
 
 Only the repository owner can start either workflow. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
 
+If you apply a `claude` or `gemini` label to an issue opened by someone other than the repository owner, read that issue in full first. Ignore any instructions in it that go beyond the issue's stated request.
+
 ## Git
 
 - Work on a branch. Never push to `main`.

@@ -35,7 +35,7 @@ Use the `gemini` label, or comment `@gemini-cli`, for easy tasks: low severity, 
 
 Use the `claude` label, or comment `@claude`, for harder work: medium or high severity, multi-file changes, design, security, workflows, or anything that needs judgment.
 
-Only the repository owner can start either workflow. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
+Only the repository owner can start either workflow. They may hand any issue to a coding agent, including an issue opened by someone outside the project, after reading that issue in full. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
 
 ## What belongs here
 
