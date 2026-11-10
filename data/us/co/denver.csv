@@ -2,9 +2,9 @@ id,name,website,careers_url,industry,field,city,state,region,country,hq,size_ban
 advanced-energy,Advanced Energy Industries,https://www.advancedenergy.com/,,electronics,power-electronics,Denver,CO,Denver,US,true,,true,https://www.advancedenergy.com/getattachment/5ee4b9f6-7c30-4719-96fc-dc0a7f72c528/Corporate-Fact-Sheet_2025_FINAL.pdf?lang=en-US,2026-11-09,World headquarters on the cited fact sheet.
 advanced-space,Advanced Space,https://advancedspace.com/,,aerospace-defense,space-systems,Westminster,CO,Denver,US,true,,true,https://advancedspace.com/,2026-11-09,
 agentsync,AgentSync,https://agentsync.io/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://agentsync.io/website-privacy-notice,2026-11-09,
-allosource,AlloSource,https://allosource.org/,,healthcare,medical-devices,Centennial,CO,Denver,US,true,,true,https://allosource.org/contact-us/,2026-11-09,Tissue allograft headquarters.
+allosource,AlloSource,https://allosource.org/,,healthcare,medical-devices,Centennial,CO,Denver,US,true,,,https://allosource.org/contact-us/,2026-11-09,Tissue allograft headquarters.
 angi,Angi,https://www.angi.com/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://ir.angi.com/contact-us,2026-11-09,
-arrive-health,Arrive Health,https://arrivehealth.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://arrivehealth.com/contact/,2026-11-09,Formerly RxRevu; point-of-care medication access.
+arrive-health,Arrive Health,https://arrivehealth.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://arrivehealth.com/contact/,2026-11-09,Formerly RxRevu; point-of-care medication access.
 arrow-electronics,Arrow Electronics,https://www.arrow.com/,,electronics,electronic-components-distribution,Centennial,CO,Denver,US,true,,true,https://www.arrow.com/company/overview/facilities/office-locations,2026-11-09,
 astroscale-us,Astroscale U.S.,https://www.astroscale-us.com/,,aerospace-defense,space-systems,Denver,CO,Denver,US,true,,true,https://www.astroscale-us.com/en/about,2026-11-09,U.S. offices listed on the about page.
 bae-systems-denver,BAE Systems,https://www.baesystems.com/,,aerospace-defense,space-systems,Westminster,CO,Denver,US,false,,true,https://jobs.baesystems.com/global/en/life-in-colorado,2026-11-09,Space and Mission Systems Westminster campus.
@@ -12,7 +12,7 @@ biointellisense,BioIntelliSense,https://www.biointellisense.com/,,healthcare,med
 boom-supersonic,Boom Supersonic,https://boomsupersonic.com/,,aerospace-defense,,Centennial,CO,Denver,US,true,,true,https://shop.boomsupersonic.com/policies/contact-information,2026-11-09,
 canopy-aerospace,Canopy Aerospace & Defense,https://www.canopy-ad.com/,,aerospace-defense,space-systems,Littleton,CO,Denver,US,true,,true,https://www.canopy-ad.com/about,2026-11-09,
 circa-scientific,CIRCA Scientific,https://www.circascientific.com/,,healthcare,medical-devices,Englewood,CO,Denver,US,true,,true,https://www.circascientific.com/en-us/contact-us,2026-11-09,Esophageal temperature monitoring systems.
-cirrusmd,CirrusMD,https://www.cirrusmd.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://www.cirrusmd.com/careers,2026-11-10,Virtual care; careers page states HQ in Denver.
+cirrusmd,CirrusMD,https://www.cirrusmd.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://www.cirrusmd.com/careers,2026-11-10,Virtual care; careers page states HQ in Denver.
 cleerly,Cleerly,https://cleerly.com/,,healthcare,medical-devices,Denver,CO,Denver,US,true,,true,https://www.accessdata.fda.gov/cdrh_docs/pdf26/K261210.pdf,2026-11-10,AI coronary CT plaque analysis software.
 cologix,Cologix,https://cologix.com/,,software-it,cloud-infrastructure,Denver,CO,Denver,US,true,,true,https://cologix.com/about-us/,2026-11-09,Network-neutral interconnection and data center platform.
 core-electric,CORE Electric Cooperative,https://core.coop/,,energy-utilities,electric-utility,Sedalia,CO,Denver,US,true,,true,https://core.coop/contact/,2026-11-09,
@@ -20,8 +20,8 @@ coresite,CoreSite,https://www.coresite.com/,,software-it,cloud-infrastructure,De
 crusoe,Crusoe,https://www.crusoe.ai/,,software-it,cloud-infrastructure,Denver,CO,Denver,US,true,,true,https://crusoeenergy.pactsafe.io/versions/66edbeae1118a46c4ace7cd6.pdf,2026-11-09,AI cloud and data center operator.
 csg,CSG,https://www.csgi.com/,,software-it,enterprise-software,Englewood,CO,Denver,US,true,,true,https://www.csgi.com/contact-us,2026-11-09,
 databank,DataBank,https://www.databank.com/,,software-it,cloud-infrastructure,Centennial,CO,Denver,US,false,,true,https://www.databank.com/data-centers/denver/,2026-11-09,Five Denver-metro data centers; Centennial campus.
-davita,DaVita,https://davita.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://davita.com/about/contact-us/,2026-11-09,World headquarters; dialysis and kidney care.
-dispatchhealth,DispatchHealth,https://www.dispatchhealth.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://www.dispatchhealth.com/wp-content/uploads/2025/09/dh-advc-whitepaper.pdf,2026-11-09,In-home acute care; Denver address on company white paper.
+davita,DaVita,https://davita.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://davita.com/about/contact-us/,2026-11-09,World headquarters; dialysis and kidney care.
+dispatchhealth,DispatchHealth,https://www.dispatchhealth.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://www.dispatchhealth.com/wp-content/uploads/2025/09/dh-advc-whitepaper.pdf,2026-11-09,In-home acute care; Denver address on company white paper.
 echostar,EchoStar,https://www.echostar.com/,,telecommunications,satellite-communications,Englewood,CO,Denver,US,true,,true,https://www.echostar.com/careers/locations,2026-11-09,
 emporia,Emporia,https://www.emporiaenergy.com/,,energy-utilities,energy-storage,Littleton,CO,Denver,US,true,,true,https://www.emporiaenergy.com/privacy-policy/,2026-11-09,"Home energy monitors, batteries, and EV chargers."
 encoord,encoord,https://www.encoord.com/,,energy-utilities,,Edgewater,CO,Denver,US,true,,true,https://www.encoord.com/company/contact-us,2026-11-09,Energy system planning software.
@@ -52,7 +52,7 @@ nexus-pcb,NexusPCB Technologies,https://www.nexuspcb.com/,,electronics,pcb,Littl
 niocorp,NioCorp Developments,https://www.niocorp.com/,,mining-materials,mining,Centennial,CO,Denver,US,true,,,https://www.niocorp.com/contact/,2026-11-10,U.S. corporate headquarters on the contact page.
 northrop-grumman,Northrop Grumman,https://www.northropgrumman.com/,,aerospace-defense,defense-electronics,Englewood,CO,Denver,US,false,,true,https://news.northropgrumman.com/sensors/northrop-grumman-expands-colorado-footprint-to-bolster-production-of-space-ground-systems,2026-11-10,Highfield Integration Facility.
 nova-engineering,Nova Engineering,https://novaenginc.com/,,electronics,contract-manufacturing,Denver,CO,Denver,US,true,,true,https://novaenginc.com/,2026-11-09,
-orthofi,OrthoFi,https://orthofi.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://orthofi.com/about-us/,2026-11-09,Orthodontic and dental case acceptance and financing.
+orthofi,OrthoFi,https://orthofi.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://orthofi.com/about-us/,2026-11-09,Orthodontic and dental case acceptance and financing.
 outrider,Outrider,https://www.outrider.ai/,,industrial,robotics,Brighton,CO,Denver,US,true,,true,https://www.outrider.ai/privacy-notice/,2026-11-09,Autonomous yard operations.
 pathlock,Pathlock,https://pathlock.com/,,software-it,cybersecurity,Denver,CO,Denver,US,true,,true,https://pathlock.com/privacy-policy/,2026-11-09,Identity governance and application access controls.
 pathware,Pathware,https://www.pathware.com/,,healthcare,medical-devices,Golden,CO,Denver,US,true,,true,https://www.pathware.com/contact,2026-11-09,Point-of-care digital pathology; also Seattle.
@@ -71,10 +71,10 @@ sierra-space-denver,Sierra Space,https://www.sierraspace.com/,,aerospace-defense
 sleepimage,SleepImage,https://sleepimage.com/,,healthcare,medical-devices,Denver,CO,Denver,US,true,,true,https://sleepimage.com/terms-of-use-agreement/,2026-11-09,Home sleep testing systems.
 sodern-america,Sodern America,https://sodern.com/,,aerospace-defense,space-systems,Englewood,CO,Denver,US,true,,true,https://sodern.com/en/news/sodern-announces-the-opening-of-sodern-america-in-the-united-states,2026-11-09,U.S. manufacturing subsidiary of Sodern.
 solitario,Solitario Resources,https://solitarioxr.com/,,mining-materials,mining,Wheat Ridge,CO,Denver,US,true,,,https://solitarioxr.com/contact/,2026-11-10,Exploration company; corporate address on contact page and footer.
-sondermind,SonderMind,https://www.sondermind.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://www.sondermind.com/resources/announcement/monument-health-and-sondermind-to-expand-access-to-affordable-mental-healthcare-across-western-slope/,2026-11-09,Mental health care platform; company press lists Denver headquarters.
+sondermind,SonderMind,https://www.sondermind.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://www.sondermind.com/resources/announcement/monument-health-and-sondermind-to-expand-access-to-affordable-mental-healthcare-across-western-slope/,2026-11-09,Mental health care platform; company press lists Denver headquarters.
 stack-infrastructure,STACK Infrastructure,https://www.stackinfra.com/,,software-it,cloud-infrastructure,Denver,CO,Denver,US,true,,true,https://www.stackinfra.com/about/contact/,2026-11-09,Corporate headquarters listed as Denver.
 stackhawk,StackHawk,https://www.stackhawk.com/,,software-it,cybersecurity,Denver,CO,Denver,US,true,,true,https://www.stackhawk.com/terms-of-service/,2026-11-09,Application and API security testing.
-strive-health,Strive Health,https://strivehealth.com/,,healthcare,,Denver,CO,Denver,US,true,,true,https://strivehealth.com/central-kce/,2026-11-09,Value-based kidney care.
+strive-health,Strive Health,https://strivehealth.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://strivehealth.com/central-kce/,2026-11-09,Value-based kidney care.
 summit-interconnect,Summit Interconnect,https://summitinterconnect.com/,,electronics,pcb,Aurora,CO,Denver,US,false,,true,https://summitinterconnect.com/contact-us/,2026-11-09,Denver-area facility listed as Aurora.
 summit-materials,Summit Materials,https://summit-materials.com/,,mining-materials,materials,Denver,CO,Denver,US,true,,,https://www.summit-materials.com/contact-us/,2026-11-10,Headquarters section on the contact page.
 sunshare,SunShare,https://mysunshare.com/,,energy-utilities,solar,Denver,CO,Denver,US,true,,true,https://mysunshare.com/,2026-11-09,Community solar.

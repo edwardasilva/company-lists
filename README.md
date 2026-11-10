@@ -39,7 +39,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `country` | yes | `US` for now, and it matches the folder |
 | `hq` | yes | `true` when this location is the company headquarters |
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
-| `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
+| `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
 | `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
