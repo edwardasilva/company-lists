@@ -41,7 +41,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
 | `source_url` | yes | A public `https://` page that backs the row |
-| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
+| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
 Rows are sorted by `id`. A company with sites in more than one region gets a row in each file. An `id` gets a suffix, such as `acme-denver`, only when two rows would otherwise share one.
