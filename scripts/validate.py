@@ -11,6 +11,7 @@ Exits 1 and prints one line per problem when anything fails.
 
 import csv
 import datetime
+import io
 import json
 import os
 import re
@@ -58,9 +59,11 @@ def check_url(value):
     host = parts.hostname or ""
     if parts.username or parts.password:
         return "has a user or password"
+    if parts.netloc != parts.netloc.lower():
+        return "has an uppercase host"
     if "." not in host or host.startswith(".") or host.endswith("."):
         return "has no valid host"
-    if host in ("localhost",) or re.fullmatch(r"[\d.]+", host):
+    if re.fullmatch(r"[\d.]+", host):
         return "points at a local or IP host"
     return None
 
@@ -88,23 +91,27 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
         text = raw.decode("utf-8")
     except UnicodeDecodeError as exc:
         err(1, f"is not UTF-8: {exc}")
-        return problems
+        return problems, 0
 
     parts = path.relative_to(DATA).parts
     if len(parts) != 3 or not parts[2].endswith(".csv"):
         err(1, "must be data/<country>/<state>/<region>.csv")
-        return problems
+        return problems, 0
     want_country, want_state, want_region = parts[0].upper(), parts[1].upper(), parts[2][:-4]
 
-    reader = csv.reader(text.splitlines())
+    # newline="" leaves line splitting to the csv module, so only real line ends count.
+    reader = csv.reader(io.StringIO(text, newline=""))
     header = next(reader, None)
     if header != columns:
         err(1, f"header must be exactly: {','.join(columns)}")
-        return problems
+        return problems, 0
 
     prev_id = None
     sites = {}
-    for line, cells in enumerate(reader, start=2):
+    rows = 0
+    for cells in reader:
+        line = reader.line_num
+        rows += 1
         if len(cells) != len(columns):
             err(line, f"has {len(cells)} cells, expected {len(columns)}")
             continue
@@ -114,7 +121,7 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             spec = props[col]
             if value != value.strip():
                 err(line, f"{col} has leading or trailing spaces")
-            if "\n" in value:
+            if len(value.splitlines()) > 1:
                 err(line, f"{col} has a line break")
             if col in nonempty and not value:
                 err(line, f"{col} is empty")
@@ -176,7 +183,7 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             except ValueError:
                 err(line, f"last_verified {row['last_verified']} is not a real date")
 
-    return problems
+    return problems, rows
 
 
 def check_industries():
@@ -236,6 +243,8 @@ def main(argv):
     # Ids are unique across the repo, so every file is read even when only some are named.
     files = sorted(DATA.rglob("*.csv"))
     named = {Path(a).resolve() for a in argv}
+    for p in sorted(named - {f.resolve() for f in files}):
+        problems.append(f"{p}: not a data file under data/")
     stray = [p for p in DATA.rglob("*") if p.is_file() and p.suffix != ".csv" and p.name != ".gitkeep"]
     for p in stray:
         problems.append(f"{p.relative_to(ROOT).as_posix()}: only .csv files belong under data/")
@@ -243,17 +252,18 @@ def main(argv):
     today = datetime.date.today() + datetime.timedelta(days=1)  # allow for time zones
     rows = 0
     for path in files:
-        found = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today)
+        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today)
         if not named or path.resolve() in named:
             problems.extend(found)
-        rows += max(0, sum(1 for _ in path.open(encoding="utf-8", errors="replace")) - 1)
+        rows += count
 
     if problems:
         for problem in problems:
             print(f"::error::{problem}" if "GITHUB_ACTIONS" in os.environ else problem)
         print(f"[ERROR] {len(problems)} problem(s) in {len(files)} file(s).")
         return 1
-    print(f"[SUCCESS] {len(files)} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
+    checked = len([p for p in files if not named or p.resolve() in named])
+    print(f"[SUCCESS] {checked} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
     return 0
 
 
