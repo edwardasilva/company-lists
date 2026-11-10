@@ -5,20 +5,27 @@ body:
   - type: markdown
     attributes:
       value: Public company details only. Do not add personal names, email addresses, or phone numbers.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Which company to add or fix, and what is wrong or missing. A short description is enough. The fields below are optional.
+    validations:
+      required: false
   - type: input
     id: name
     attributes:
-      label: Company name
+      label: Company name (optional)
       description: As the company writes it.
     validations:
-      required: true
+      required: false
   - type: input
     id: website
     attributes:
-      label: Website
+      label: Website (optional)
       description: The https home page, for example https://example.com/
     validations:
-      required: true
+      required: false
   - type: input
     id: city
     attributes:
@@ -36,11 +43,11 @@ body:
   - type: dropdown
     id: country
     attributes:
-      label: Country
+      label: Country (optional)
       options:
         - US
     validations:
-      required: true
+      required: false
   - type: dropdown
     id: industry
     attributes:
@@ -99,10 +106,10 @@ body:
   - type: input
     id: source_url
     attributes:
-      label: Source
+      label: Source (optional)
       description: A public page that states the company name and city, usually the company's own site.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: notes
     attributes:

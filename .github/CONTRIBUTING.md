@@ -4,22 +4,30 @@ Thanks for helping with the company list. Anyone can add or fix a company.
 
 ## Suggest a change
 
-Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and pick a template. Say which company, which metro, and what is wrong or missing.
+Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and describe the change, such as which company, which metro, and what is wrong or missing. A short description is all it needs.
 
 ## Add or fix a company
 
 1. Fork the repo (or cut a short branch if you have write access).
 2. Edit the metro file, such as `data/us/co/denver.csv`. For a new metro, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
 3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
-4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount.
+4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount. `careers_url` is optional. Use the company's own jobs page, not LinkedIn or another board.
 5. Keep rows sorted by `id`.
-6. Run the check and fix anything it reports:
+6. If you can, run the check and fix anything it reports. If you skip it, maintainers run it before merging:
 
 ```bash
 python3 scripts/validate.py
 ```
 
-7. Open a pull request into `main`.
+7. Open a pull request into `main` with a short description of what changed and why. That is all a pull request needs. An issue link is optional. Maintainers review the change.
+
+A finished row looks like this, in the column order of the file header. It is an example, not a real company:
+
+```csv
+example-co,Example Co,https://example.com/,,electronics,test-measurement,Denver,CO,Denver,US,true,,true,https://example.com/contact,2026-11-10,Headquarters on the contact page.
+```
+
+Write `notes` as one or two short phrases that say what the source shows or what the company makes. Start with a capital letter, join phrases with a semicolon, and end with a period.
 
 ## Coding agents
 
@@ -37,7 +45,7 @@ A public source is a page anyone can open without logging in, such as a company 
 
 ## Releases
 
-Before cutting a release, run release-cut and land or close every `release-sweep` issue.
+Only the repository owner cuts releases.
 
 ## Conduct
 
@@ -45,4 +53,4 @@ Be kind and assume good intent. To report a problem with someone's behavior, use
 
 ## License
 
-By contributing, you agree that data you add is licensed under [CC BY 4.0](../LICENSE-CONTENT) and code under the [MIT License](../LICENSE).
+By contributing, you agree that what you add, data and code alike, is licensed under the [MIT License](../LICENSE).

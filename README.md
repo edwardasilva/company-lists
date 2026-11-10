@@ -2,7 +2,7 @@
 
 A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro, and it lists companies, not job postings.
 
-[eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `data/company-lists`.
+[eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
 For students and new graduates looking for employers near them, starting with electrical and computer engineering.
 
@@ -26,6 +26,7 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `id` | yes | Lowercase slug, unique across the whole repo. Never renamed or reused |
 | `name` | yes | The company name as the company writes it |
 | `website` | yes | Home page, `https://`, ending in `/`. One row per website in a file |
+| `careers_url` | no | The company's own careers or jobs page, not a job board |
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
 | `city` | yes | City of this location |
@@ -63,13 +64,6 @@ How to add rows is in [CONTRIBUTING](.github/CONTRIBUTING.md).
 
 ## License
 
-The repo has two licenses, one for the dataset and one for code.
-
-The dataset is licensed under [CC BY 4.0](LICENSE-CONTENT). You may share and adapt it if you give credit and link the license. The dataset means:
-
-- the data files in `data/`
-- the lists in `schema/`, including `schema/industries.csv` and the allowed values in `schema/company.schema.json`
-
-Code is licensed under the [MIT License](LICENSE). Code means everything else, including the validator in `scripts/`, the workflows in `.github/`, and config files.
+Everything in this repo is licensed under the [MIT License](LICENSE). That includes the data in `data/`, the files in `schema/`, and the scripts in `scripts/`.
 
 Company names and websites belong to their owners. Listing a company does not mean it endorses this project.

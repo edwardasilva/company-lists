@@ -22,12 +22,13 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "company.schema.json"
 INDUSTRIES = ROOT / "schema" / "industries.csv"
 DATA = ROOT / "data"
+FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "company.yml"
 
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 # North American numbers such as 303-555-0100, (303) 555 0100, +1 303.555.0100,
 # and international numbers that start with +.
 PHONE = re.compile(r"(\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b|\+\d[\d\s().-]{7,}\d")
-URL_FIELDS = ("website", "source_url")
+URL_FIELDS = ("website", "careers_url", "source_url")
 
 
 def slug(text):
@@ -200,10 +201,38 @@ def check_industries():
     return problems
 
 
+def form_options(text, field):
+    """Return the dropdown options of one field in the issue form."""
+    options, inside = [], False
+    for line in text.split(f"    id: {field}\n", 1)[-1].splitlines():
+        if line.startswith("  - type:"):
+            break
+        if inside and line.startswith("        - "):
+            options.append(line[10:].strip().strip('"'))
+        inside = inside or line.strip() == "options:"
+    return options
+
+
+def check_form(industries, props):
+    """Check that the issue form offers the same lists as the schema."""
+    text = FORM.read_text(encoding="utf-8")
+    want = {
+        "industry": sorted(industries),
+        "size_band": ["Not sure"] + [x for x in props["size_band"]["enum"] if x],
+        "country": props["country"]["enum"],
+    }
+    return [
+        f".github/ISSUE_TEMPLATE/company.yml: {field} options must be: {', '.join(expected)}"
+        for field, expected in want.items()
+        if form_options(text, field) != expected
+    ]
+
+
 def main(argv):
     columns, nonempty, props = load_schema()
     industries, pairs = load_industries()
     problems = check_industries()
+    problems += check_form(industries, props)
     # Ids are unique across the repo, so every file is read even when only some are named.
     files = sorted(DATA.rglob("*.csv"))
     named = {Path(a).resolve() for a in argv}
