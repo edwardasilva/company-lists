@@ -1,7 +1,7 @@
 id,name,website,careers_url,industry,field,city,state,region,country,hq,size_band,ee_relevant,source_url,last_verified,notes
 accure,Accure Acne,https://accureacne.com/,,healthcare,medical-devices,Boulder,CO,Boulder,US,true,,true,https://accureacne.com/contact-us/,2026-11-09,Acne laser therapy system.
 alchemer,Alchemer,https://www.alchemer.com/,,software-it,enterprise-software,Louisville,CO,Boulder,US,true,,true,https://www.alchemer.com/support/,2026-11-09,
-amp-robotics,AMP Robotics,https://ampsortation.com/,,industrial,robotics,Louisville,CO,Boulder,US,true,,true,https://ampsortation.com/articles/new-facility-encompasses-expanded-production-floor,2026-11-09,AI robotics for recycling sortation.
+amp-robotics,AMP,https://ampsortation.com/,,industrial,robotics,Louisville,CO,Boulder,US,true,,true,https://ampsortation.com/articles/new-facility-encompasses-expanded-production-floor,2026-11-10,Legal name AMP Robotics Corporation; AI robotics for recycling sortation.
 artimus-robotics,Artimus Robotics,https://www.artimusrobotics.com/,,industrial,robotics,Boulder,CO,Boulder,US,true,,true,https://www.artimusrobotics.com/contact-us,2026-11-09,
 automox,Automox,https://www.automox.com/,,software-it,cybersecurity,Boulder,CO,Boulder,US,false,,true,https://www.automox.com/contact-us,2026-11-09,Boulder mailing address on company contact page.
 bae-systems-boulder,BAE Systems,https://www.baesystems.com/,,aerospace-defense,space-systems,Broomfield,CO,Boulder,US,true,,true,https://jobs.baesystems.com/global/en/life-in-colorado,2026-11-09,Space and Mission Systems headquarters.
@@ -21,7 +21,7 @@ orbit-fab,Orbit Fab,https://www.orbitfab.com/,,aerospace-defense,space-systems,L
 qsc-systems,QSC Systems,https://www.qscsystems.com/,,electronics,contract-manufacturing,Longmont,CO,Boulder,US,true,,true,https://www.qscsystems.com/contact.html,2026-11-09,
 raven-space-systems,Raven Space Systems,https://www.ravenspacesystems.com/,,aerospace-defense,uncrewed-systems,Broomfield,CO,Boulder,US,true,,true,https://www.ravenspacesystems.com/,2026-11-09,
 redwire-boulder,Redwire,https://rdw.com/,,electronics,rf-microwave,Longmont,CO,Boulder,US,false,,true,https://rdw.com/locations/longmont/,2026-11-09,RF products facility.
-salas-obrien-boulder,Salas O'Brien,https://www.salasobrien.com/,,construction-engineering,engineering-services,Boulder,CO,Boulder,US,false,,,https://salasobrien.com/office-locations/colorado/,2026-11-10,Technology and acoustics office.
+salas-obrien-boulder,Salas O'Brien,https://salasobrien.com/,,construction-engineering,engineering-services,Boulder,CO,Boulder,US,false,,,https://salasobrien.com/office-locations/colorado/,2026-11-10,Technology and acoustics office.
 scythe-robotics,Scythe Robotics,https://scytherobotics.com/,,industrial,robotics,Longmont,CO,Boulder,US,true,,true,https://scytherobotics.com/contact-us,2026-11-09,Autonomous commercial mowing.
 sierra-space,Sierra Space,https://www.sierraspace.com/,,aerospace-defense,space-systems,Louisville,CO,Boulder,US,true,,true,https://www.sierraspace.com/contact/,2026-11-09,
 solid-power,Solid Power,https://www.solidpowerbattery.com/,,energy-utilities,energy-storage,Louisville,CO,Boulder,US,true,,true,https://www.solidpowerbattery.com/contact/default.aspx,2026-11-09,Also electrolyte manufacturing and R&D in Thornton.
