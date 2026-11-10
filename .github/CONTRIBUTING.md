@@ -37,7 +37,7 @@ A public source is a page anyone can open without logging in, such as a company 
 
 ## Releases
 
-Before cutting a release, run release-cut and land or close every `release-sweep` issue.
+Only the repository owner cuts releases.
 
 ## Conduct
 
