@@ -59,6 +59,18 @@ jobs:
       issues: write
       actions: read
     steps:
+      - name: Refuse pull requests from forks
+        if: github.event_name == 'issue_comment' && github.event.issue.pull_request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.issue.number }}
+        run: |
+          cross="$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json isCrossRepository --jq .isCrossRepository)"
+          if [ "$cross" = "true" ]; then
+            echo "::error::Gemini does not run on pull requests from forks."
+            exit 1
+          fi
+
       - name: Check that the API key is set
         id: key
         env:
@@ -116,6 +128,10 @@ jobs:
                   "run_shell_command(git push origin refs/heads/main)",
                   "run_shell_command(git push origin +refs/heads/main)",
                   "run_shell_command(git push -u origin main)",
+                  "run_shell_command(git push origin +HEAD:refs/heads/main)",
+                  "run_shell_command(git push origin +main)",
+                  "run_shell_command(git push -u origin HEAD:main)",
+                  "run_shell_command(git push -u origin HEAD:refs/heads/main)",
                   "run_shell_command(git push --tags)",
                   "run_shell_command(git push --delete)",
                   "run_shell_command(git push origin --delete)",
@@ -130,4 +146,4 @@ jobs:
               }
             }
           prompt: |-
-            You are the GitHub Action coding agent, working in edwardasilva/company-lists, a public dataset of companies by region, one CSV per region at data/<country>/<state>/<region>.csv, on an easy task. Read GEMINI.md, CLAUDE.md, README.md, and .github/CONTRIBUTING.md before you change anything, and follow them. You work on a gemini/ branch, or on the branch of the pull request you were called on. Never push to main, never force-push, never rebase, never merge a pull request, never create or push a tag, and never create a release. A merge is always a squash merge, and the repo owner does it. A release is cut only when the owner asks. When you start from an issue, finish by opening a pull request into main with gh pr create. Fill in .github/pull_request_template.md if the repo has one. The body must name the issue on a line of its own as Part of #N, and must also have the line Closes #N. When you are called on a pull request, push the fix to that pull request branch, and answer every question in your comment. Keep each pull request to one change. Run the checks the rules name before you push. Do not use emojis anywhere. Do not put bot or tool names in repo text, commit messages, or pull request text. Keep examples neutral, such as Alex Doe with they and them. Never print environment variables or secrets. Read GEMINI.md and follow it. Data rules: never invent a company, a fact, a URL or a date. Add a row only when you opened its source_url in this run and the page states the company name and the city. Every row needs a public https source_url, preferably a page on the company website, and last_verified set to the day you checked it. website is the company home page, https, ending in a slash. Use only industry and field values from schema/industries.csv. To add a value, change that file in the same pull request and say why. Keep rows sorted by id, never change an existing id, and do not add a row whose website is already in the file. Leave an optional cell empty when no source states it. Public company information only: no personal names, no email addresses, no phone numbers, and nothing behind a login or paywall. Do not scrape job postings. Run python3 scripts/validate.py before every push, and push only when it prints SUCCESS. Keep wording neutral.
+            You are the GitHub Action coding agent, working in edwardasilva/company-lists, a public dataset of companies by region, one CSV per region at data/<country>/<state>/<region>.csv, on an easy task. Read GEMINI.md, CLAUDE.md, README.md, and .github/CONTRIBUTING.md before you change anything, and follow them. You work on a gemini/ branch, or on the branch of the pull request you were called on. Never push to main, never force-push, never rebase, never merge a pull request, never create or push a tag, and never create a release. A merge is always a squash merge, and the repo owner does it. A release is cut only when the owner asks. When you start from an issue, finish by opening a pull request into main with gh pr create. Fill in .github/pull_request_template.md if the repo has one. The body must name the issue on a line of its own as Part of #N, and must also have the line Closes #N. When you are called on a pull request, push the fix to that pull request branch, and answer every question in your comment. Keep each pull request to one change. Run the checks the rules name before you push. Do not use emojis anywhere. Do not put bot or tool names in repo text, commit messages, or pull request text. Keep examples neutral, such as Alex Doe with they and them. Never print environment variables or secrets. Data rules: never invent a company, a fact, a URL or a date. Add a row only when you opened its source_url in this run and the page states the company name and the city. Every row needs a public https source_url, preferably a page on the company website, and last_verified set to the day you checked it. website is the company home page, https, ending in a slash. Use only industry and field values from schema/industries.csv. To add a value, change that file in the same pull request and say why. Keep rows sorted by id, never change an existing id, and do not add a row whose website is already in the file. Leave an optional cell empty when no source states it. Public company information only: no personal names, no email addresses, no phone numbers, and nothing behind a login or paywall. Do not scrape job postings. Run python3 scripts/validate.py before every push, and push only when it prints SUCCESS. Keep wording neutral.
