@@ -17,6 +17,8 @@ To report a wrong, closed, or missing company, [open an issue](https://github.co
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
 
+Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rather than `main`.
+
 ## Columns
 
 Every file has the same header, in this order. An empty cell means unknown.
