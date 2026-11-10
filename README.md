@@ -1,6 +1,6 @@
 # company-lists
 
-A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro, and it lists companies, not job postings.
+A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It covers the Denver and Boulder metros in Colorado and the Los Angeles and San Francisco Bay Area metros in California, and it lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
