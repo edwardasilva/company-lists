@@ -207,6 +207,8 @@ def main(argv):
     # Ids are unique across the repo, so every file is read even when only some are named.
     files = sorted(DATA.rglob("*.csv"))
     named = {Path(a).resolve() for a in argv}
+    for p in sorted(named - {f.resolve() for f in files}):
+        problems.append(f"{p}: not a data file under data/")
     stray = [p for p in DATA.rglob("*") if p.is_file() and p.suffix != ".csv" and p.name != ".gitkeep"]
     for p in stray:
         problems.append(f"{p.relative_to(ROOT).as_posix()}: only .csv files belong under data/")
@@ -224,7 +226,8 @@ def main(argv):
             print(f"::error::{problem}" if "GITHUB_ACTIONS" in os.environ else problem)
         print(f"[ERROR] {len(problems)} problem(s) in {len(files)} file(s).")
         return 1
-    print(f"[SUCCESS] {len(files)} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
+    checked = len([p for p in files if not named or p.resolve() in named])
+    print(f"[SUCCESS] {checked} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
     return 0
 
 
