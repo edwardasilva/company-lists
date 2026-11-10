@@ -2,7 +2,7 @@
 
 A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro, and it lists companies, not job postings.
 
-[eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `data/company-lists`.
+[eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
 For students and new graduates looking for employers near them, starting with electrical and computer engineering.
 
