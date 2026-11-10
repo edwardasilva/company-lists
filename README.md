@@ -1,6 +1,6 @@
 # company-lists
 
-A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver, Colorado metro, and it lists companies, not job postings.
+A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It starts with the Denver and Boulder, Colorado metros, and it lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
@@ -39,6 +39,8 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `source_url` | yes | A public `https://` page that backs the row |
 | `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
 | `notes` | no | Short and neutral, 200 characters at most |
+
+A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont, Louisville and Superior. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Sterling Ranch, Westminster and Wheat Ridge. To add a city, add it here in the same pull request as its first row.
 
 Rows are sorted by `id`. A company with sites in two regions gets a row in each file, with a different `id` such as `acme-denver`.
 
