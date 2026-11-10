@@ -35,13 +35,22 @@ Use the `gemini` label, or comment `@gemini-cli`, for easy tasks: low severity, 
 
 Use the `claude` label, or comment `@claude`, for harder work: medium or high severity, multi-file changes, design, security, workflows, or anything that needs judgment.
 
-Only the repository owner can start either workflow. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
+Only the repository owner can start either workflow. They may hand any issue to a coding agent, including an issue opened by someone outside the project, after reading that issue in full. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
+
+## Which companies belong
+
+A company belongs when a public page shows a location in the region where people do engineering work. A mailing address, an HR-only office, or a network point of presence is not enough. Universities and government labs count when they meet the same test.
 
 ## What belongs here
 
 Public company facts only. Never invent a row. No personal names, emails, or phone numbers. The validator rejects emails and phone numbers. No job postings yet. Prefer the company's own website as `source_url`, and never cite a page behind a login or paywall. Never rename or reuse an `id`. No emoji, and keep wording neutral.
 
 A public source is a page anyone can open without logging in, such as a company About or Locations page.
+
+## When a company changes
+
+- Closed, or no longer has a location in the region: delete the row, and say why in the pull request.
+- Acquired or renamed, and still has a location in the region: keep the row. Update `name`, `website` and `source_url`, keep the `id`, and add the old name to `notes`, such as "Formerly Acme."
 
 ## Releases
 
