@@ -11,7 +11,7 @@ Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose)
 1. Fork the repo (or cut a short branch if you have write access).
 2. Edit the metro file, such as `data/us/co/denver.csv`. For a new metro, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
 3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
-4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount.
+4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount. `careers_url` is optional. Use the company's own jobs page, not LinkedIn or another board.
 5. Keep rows sorted by `id`.
 6. Run the check and fix anything it reports:
 

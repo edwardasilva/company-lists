@@ -27,7 +27,7 @@ EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]
 # North American numbers such as 303-555-0100, (303) 555 0100, +1 303.555.0100,
 # and international numbers that start with +.
 PHONE = re.compile(r"(\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b|\+\d[\d\s().-]{7,}\d")
-URL_FIELDS = ("website", "source_url")
+URL_FIELDS = ("website", "careers_url", "source_url")
 
 
 def slug(text):
