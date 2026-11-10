@@ -25,7 +25,7 @@ Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rathe
 
 Every file has the same header, in this order. An empty cell means unknown.
 
-Files are UTF-8 without a byte order mark, with LF line endings and a final newline. Cells are comma separated, and a cell that contains a comma is wrapped in double quotes (RFC 4180). No cell contains a line break. `hq` holds the text `true` or `false`. `ee_relevant` holds `true` or `false`, or is empty.
+Files are UTF-8 without a byte order mark, with LF line endings and a final newline. Cells are comma separated, and a cell that contains a comma is wrapped in double quotes (RFC 4180). No cell contains a line break. `ee_relevant` holds `true` or `false`, or is empty.
 
 | Column | Required | Rule |
 | --- | --- | --- |
@@ -39,7 +39,6 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `state` | yes | USPS code, and it matches the folder |
 | `region` | yes | Metro name. Its slug is the file name, so `Denver` lives in `denver.csv` |
 | `country` | yes | `US` for now, and it matches the folder |
-| `hq` | yes | `true` when this location is the company headquarters |
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
