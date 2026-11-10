@@ -17,9 +17,13 @@ To report a wrong, closed, or missing company, [open an issue](https://github.co
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
 
+Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rather than `main`.
+
 ## Columns
 
 Every file has the same header, in this order. An empty cell means unknown.
+
+Files are UTF-8 without a byte order mark, with LF line endings and a final newline. Cells are comma separated, and a cell that contains a comma is wrapped in double quotes (RFC 4180). No cell contains a line break. `hq` holds the text `true` or `false`. `ee_relevant` holds `true` or `false`, or is empty.
 
 | Column | Required | Rule |
 | --- | --- | --- |
@@ -37,12 +41,12 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
 | `source_url` | yes | A public `https://` page that backs the row |
-| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
+| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
 A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont, Louisville and Superior. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Sterling Ranch, Westminster and Wheat Ridge. To add a city, add it here in the same pull request as its first row.
 
-Rows are sorted by `id`. A company with sites in two regions gets a row in each file, with a different `id` such as `acme-denver`.
+Rows are sorted by `id`. A company with sites in more than one region gets a row in each file. An `id` gets a suffix, such as `acme-denver`, only when two rows would otherwise share one.
 
 ## Why CSV
 
