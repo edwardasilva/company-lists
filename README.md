@@ -64,13 +64,6 @@ How to add rows is in [CONTRIBUTING](.github/CONTRIBUTING.md).
 
 ## License
 
-The repo has two licenses, one for the dataset and one for code.
-
-The dataset is licensed under [CC BY 4.0](LICENSE-CONTENT). You may share and adapt it if you give credit and link the license. The dataset means:
-
-- the data files in `data/`
-- the lists in `schema/`, including `schema/industries.csv` and the allowed values in `schema/company.schema.json`
-
-Code is licensed under the [MIT License](LICENSE). Code means everything else, including the validator in `scripts/`, the workflows in `.github/`, and config files.
+Everything in this repo is licensed under the [MIT License](LICENSE). That includes the data in `data/`, the files in `schema/`, and the scripts in `scripts/`.
 
 Company names and websites belong to their owners. Listing a company does not mean it endorses this project.

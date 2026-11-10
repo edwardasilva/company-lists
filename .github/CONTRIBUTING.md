@@ -45,4 +45,4 @@ Be kind and assume good intent. To report a problem with someone's behavior, use
 
 ## License
 
-By contributing, you agree that data you add is licensed under [CC BY 4.0](../LICENSE-CONTENT) and code under the [MIT License](../LICENSE).
+By contributing, you agree that what you add, data and code alike, is licensed under the [MIT License](../LICENSE).
