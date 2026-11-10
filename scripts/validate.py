@@ -24,6 +24,15 @@ SCHEMA = ROOT / "schema" / "company.schema.json"
 INDUSTRIES = ROOT / "schema" / "industries.csv"
 DATA = ROOT / "data"
 FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "company.yml"
+# Folders use lowercase ISO country and USPS state codes. Rows no longer store them.
+COUNTRIES = {"us"}
+USPS = {
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID",
+    "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
+    "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA",
+    "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "AS",
+    "GU", "MP", "PR", "VI",
+}
 
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 # North American numbers such as 303-555-0100, (303) 555 0100, +1 303.555.0100,
@@ -32,8 +41,8 @@ PHONE = re.compile(r"(\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b|\+\d[\d
 URL_FIELDS = ("website", "careers_url", "source_url")
 
 
-def slug(text):
-    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+def region_label(slug):
+    return slug.replace("-", " ").title()
 
 
 def load_schema():
@@ -97,7 +106,17 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
     if len(parts) != 3 or not parts[2].endswith(".csv"):
         err(1, "must be data/<country>/<state>/<region>.csv")
         return problems, 0
-    want_country, want_state, want_region = parts[0].upper(), parts[1].upper(), parts[2][:-4]
+    country_slug, state_slug, region_slug = parts[0], parts[1], parts[2][:-4]
+    if country_slug not in COUNTRIES:
+        err(1, f"country folder '{country_slug}' is not a supported lowercase country code")
+        return problems, 0
+    if state_slug != state_slug.lower() or state_slug.upper() not in USPS:
+        err(1, f"state folder '{state_slug}' is not a lowercase USPS code")
+        return problems, 0
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", region_slug):
+        err(1, f"region file name '{parts[2]}' is not a lowercase slug")
+        return problems, 0
+    want_country, want_state, want_region = country_slug.upper(), state_slug.upper(), region_slug
 
     # newline="" leaves line splitting to the csv module, so only real line ends count.
     reader = csv.reader(io.StringIO(text, newline=""))
@@ -155,19 +174,12 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             err(line, f"rows must be sorted by id; '{rid}' comes after '{prev_id}'")
         prev_id = rid
 
-        catalog.append((rel, line, row))
+        catalog.append((rel, line, row, (want_country, want_state, want_region)))
 
         if row["industry"] and row["industry"] not in industries:
             err(line, f"industry '{row['industry']}' is not in schema/industries.csv")
         elif row["field"] and (row["industry"], row["field"]) not in pairs:
             err(line, f"field '{row['field']}' is not listed for industry '{row['industry']}' in schema/industries.csv")
-
-        if row["country"] and row["country"] != want_country:
-            err(line, f"country {row['country']} does not match the folder {parts[0]}")
-        if row["state"] and row["state"] != want_state:
-            err(line, f"state {row['state']} does not match the folder {parts[1]}")
-        if row["region"] and slug(row["region"]) != want_region:
-            err(line, f"region '{row['region']}' does not match the file name {parts[2]}")
 
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", row["last_verified"]):
             try:
@@ -207,11 +219,12 @@ def check_repeats(catalog):
         for i, a in enumerate(entries):
             for b in entries[i + 1:]:
                 ra, rb = a[2], b[2]
-                if (ra["country"], ra["state"], ra["region"]) == (rb["country"], rb["state"], rb["region"]):
-                    add(a, b, "region", f"same company is listed twice in region {ra['region']} ({label} '{ra[label]}')")
+                loc_a, loc_b = a[3], b[3]
+                if loc_a == loc_b:
+                    add(a, b, "region", f"same company is listed twice in region {region_label(loc_a[2])} ({label} '{ra[label]}')")
                     continue
-                if (ra["city"].lower(), ra["state"]) == (rb["city"].lower(), rb["state"]):
-                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {ra['state']} ({label} '{ra[label]}')")
+                if (ra["city"].lower(), loc_a[1]) == (rb["city"].lower(), loc_b[1]):
+                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {loc_a[1]} ({label} '{ra[label]}')")
                 if ra["name"] != rb["name"]:
                     add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another region")
                 if ra["website"] != rb["website"]:
@@ -258,8 +271,6 @@ def check_form(industries, props):
     text = FORM.read_text(encoding="utf-8")
     want = {
         "industry": sorted(industries),
-        "size_band": ["Not sure"] + [x for x in props["size_band"]["enum"] if x],
-        "country": props["country"]["enum"],
     }
     return [
         f".github/ISSUE_TEMPLATE/company.yml: {field} options must be: {', '.join(expected)}"

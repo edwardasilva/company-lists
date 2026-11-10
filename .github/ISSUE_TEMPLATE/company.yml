@@ -30,24 +30,6 @@ body:
     id: city
     attributes:
       label: City
-  - type: input
-    id: state
-    attributes:
-      label: State
-      description: Two-letter code, for example CO.
-  - type: input
-    id: region
-    attributes:
-      label: Metro region
-      description: For example, Denver.
-  - type: dropdown
-    id: country
-    attributes:
-      label: Country (optional)
-      options:
-        - US
-    validations:
-      required: false
   - type: dropdown
     id: industry
     attributes:
@@ -81,20 +63,6 @@ body:
       options:
         - "true"
         - "false"
-  - type: dropdown
-    id: size_band
-    attributes:
-      label: Employee count
-      options:
-        - Not sure
-        - 1-10
-        - 11-50
-        - 51-200
-        - 201-500
-        - 501-1000
-        - 1001-5000
-        - 5001-10000
-        - 10001+
   - type: dropdown
     id: ee_relevant
     attributes:

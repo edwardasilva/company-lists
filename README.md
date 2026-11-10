@@ -44,14 +44,12 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
 | `city` | yes | City of this location |
-| `state` | yes | USPS code, and it matches the folder |
-| `region` | yes | Metro name. Its slug is the file name, so `Denver` lives in `denver.csv` |
-| `country` | yes | `US` for now, and it matches the folder |
-| `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
 | `last_verified` | yes | The day the row was checked against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
+
+Country, state and region come from the file path, so rows don't repeat them.
 
 A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont and Louisville. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Westminster and Wheat Ridge. `Austin` covers Austin and Round Rock. `Houston` covers Houston and Spring. `Los Angeles` covers Costa Mesa, El Segundo, Long Beach, Los Angeles, Pasadena, Redondo Beach and Rosemead. `San Francisco` covers Berkeley, Cupertino, Fremont, Livermore, Menlo Park, Mountain View, Oakland, San Jose, Santa Clara, Stanford and Sunnyvale. `Northern Virginia` covers Alexandria, Ashburn, Chantilly, Fairfax, Falls Church, Herndon, Manassas, McLean and Reston. To add a city, add it here in the same pull request as its first row.
 
@@ -67,7 +65,7 @@ One row per line keeps diffs small, and GitHub shows each file as a table. Split
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website in a region, or the same city), a `name` or `website` that differs between regions, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website in a region, or the same city and state in two files), a `name` or `website` that differs between regions, and that each file path is `data/<country>/<state>/<region>.csv`. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 The Links workflow runs `python3 scripts/check_links.py` every Monday. It is not a required check. You can run it by hand with `python3 scripts/check_links.py` from the repo root.
 
