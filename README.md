@@ -26,6 +26,7 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `id` | yes | Lowercase slug, unique across the whole repo. Never renamed or reused |
 | `name` | yes | The company name as the company writes it |
 | `website` | yes | Home page, `https://`, ending in `/`. One row per website in a file |
+| `careers_url` | no | The company's own careers or jobs page, not a job board |
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
 | `city` | yes | City of this location |
