@@ -33,7 +33,6 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `state` | yes | USPS code, and it matches the folder |
 | `region` | yes | Metro name. Its slug is the file name, so `Denver` lives in `denver.csv` |
 | `country` | yes | `US` for now, and it matches the folder |
-| `hq` | yes | `true` when this location is the company headquarters |
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
 | `source_url` | yes | A public `https://` page that backs the row |

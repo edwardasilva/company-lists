@@ -15,7 +15,6 @@
     "state",
     "region",
     "country",
-    "hq",
     "size_band",
     "ee_relevant",
     "source_url",
@@ -33,7 +32,6 @@
     "state",
     "region",
     "country",
-    "hq",
     "size_band",
     "ee_relevant",
     "source_url",
@@ -49,7 +47,6 @@
     "state",
     "region",
     "country",
-    "hq",
     "source_url",
     "last_verified"
   ],
@@ -168,14 +165,6 @@
         "US"
       ],
       "description": "ISO 3166-1 alpha-2 code."
-    },
-    "hq": {
-      "type": "string",
-      "enum": [
-        "true",
-        "false"
-      ],
-      "description": "true when this location is the company's headquarters."
     },
     "size_band": {
       "type": "string",

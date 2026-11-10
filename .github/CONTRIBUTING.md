@@ -24,7 +24,7 @@ python3 scripts/validate.py
 A finished row looks like this, in the column order of the file header. It is an example, not a real company:
 
 ```csv
-example-co,Example Co,https://example.com/,,electronics,test-measurement,Denver,CO,Denver,US,true,,true,https://example.com/contact,2026-11-10,Headquarters on the contact page.
+example-co,Example Co,https://example.com/,,electronics,test-measurement,Denver,CO,Denver,US,,true,https://example.com/contact,2026-11-10,Headquarters on the contact page.
 ```
 
 Write `notes` as one or two short phrases that say what the source shows or what the company makes. Start with a capital letter, join phrases with a semicolon, and end with a period.
