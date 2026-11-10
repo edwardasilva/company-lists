@@ -20,6 +20,7 @@ AI tools were used to help build this list. Please check any row you rely on aga
 | `schema/company.schema.json` | The columns, their order, and the allowed values |
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
+| `scripts/check_links.py` | Opens every website and source_url and reports dead links and cross-domain redirects. Python standard library only |
 
 Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rather than `main`.
 
@@ -62,6 +63,8 @@ python3 scripts/validate.py
 ```
 
 It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website in a region, or the same city), a `name` or `website` that differs between regions, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+
+The Links workflow runs `python3 scripts/check_links.py` every Monday. It is not a required check. You can run it by hand with `python3 scripts/check_links.py` from the repo root.
 
 ## Rules
 
