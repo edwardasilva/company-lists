@@ -36,7 +36,7 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
 | `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
 | `source_url` | yes | A public `https://` page that backs the row |
-| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
+| `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
 Rows are sorted by `id`. A company with sites in two regions gets a row in each file, with a different `id` such as `acme-denver`.
