@@ -73,7 +73,7 @@ def site_key(url):
     return host[4:] if host.startswith("www.") else host
 
 
-def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today):
+def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog):
     problems = []
     rel = path.relative_to(ROOT).as_posix()
 
@@ -107,7 +107,6 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
         return problems, 0
 
     prev_id = None
-    sites = {}
     rows = 0
     for cells in reader:
         line = reader.line_num
@@ -156,12 +155,7 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             err(line, f"rows must be sorted by id; '{rid}' comes after '{prev_id}'")
         prev_id = rid
 
-        if row["website"]:
-            key = site_key(row["website"])
-            if key in sites:
-                err(line, f"website {row['website']} duplicates line {sites[key]}")
-            else:
-                sites[key] = line
+        catalog.append((rel, line, row))
 
         if row["industry"] and row["industry"] not in industries:
             err(line, f"industry '{row['industry']}' is not in schema/industries.csv")
@@ -184,6 +178,45 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
                 err(line, f"last_verified {row['last_verified']} is not a real date")
 
     return problems, rows
+
+
+def check_repeats(catalog):
+    """Check repeated companies across all files.
+
+    A company is the same when its website host or its lowercased name matches.
+    Returns (files, message) pairs; the message starts with the first location.
+    """
+    found = []
+    reported = set()
+    groups = {}
+    for entry in catalog:
+        row = entry[2]
+        if row["website"]:
+            groups.setdefault(("website", site_key(row["website"])), []).append(entry)
+        if row["name"]:
+            groups.setdefault(("name", row["name"].lower()), []).append(entry)
+
+    def add(a, b, kind, msg):
+        pair = (a[:2], b[:2], kind)
+        if pair in reported:
+            return
+        reported.add(pair)
+        found.append(({a[0], b[0]}, f"{a[0]}:{a[1]}: {msg} (also {b[0]}:{b[1]})"))
+
+    for (label, _), entries in sorted(groups.items()):
+        for i, a in enumerate(entries):
+            for b in entries[i + 1:]:
+                ra, rb = a[2], b[2]
+                if (ra["country"], ra["state"], ra["region"]) == (rb["country"], rb["state"], rb["region"]):
+                    add(a, b, "region", f"same company is listed twice in region {ra['region']} ({label} '{ra[label]}')")
+                    continue
+                if (ra["city"].lower(), ra["state"]) == (rb["city"].lower(), rb["state"]):
+                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {ra['state']} ({label} '{ra[label]}')")
+                if ra["name"] != rb["name"]:
+                    add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another region")
+                if ra["website"] != rb["website"]:
+                    add(a, b, "website", f"website {ra['website']} must match {rb['website']} for the same company in another region")
+    return found
 
 
 def check_industries():
@@ -251,11 +284,16 @@ def main(argv):
     seen_ids = {}
     today = datetime.date.today() + datetime.timedelta(days=1)  # allow for time zones
     rows = 0
+    catalog = []
     for path in files:
-        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today)
+        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog)
         if not named or path.resolve() in named:
             problems.extend(found)
         rows += count
+    named_rel = {p.relative_to(ROOT).as_posix() for p in named if p.is_relative_to(ROOT)}
+    for rels, msg in check_repeats(catalog):
+        if not named or rels & named_rel:
+            problems.append(msg)
 
     if problems:
         for problem in problems:

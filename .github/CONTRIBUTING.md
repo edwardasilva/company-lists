@@ -29,6 +29,10 @@ example-co,Example Co,https://example.com/,,electronics,test-measurement,Denver,
 
 Write `notes` as one or two short phrases that say what the source shows or what the company makes. Start with a capital letter, join phrases with a semicolon, and end with a period.
 
+## One row per company per region
+
+A company gets one row in each region where it has a location, and never two rows in the same region. Rows for the same company in different regions must have exactly the same `name` and `website`, so tools can merge them. The validator fails when a company repeats in a region, repeats for the same city and state in two files, or has a different `name` or `website` between regions. Two rows are the same company when their website host or their name, ignoring case, matches.
+
 ## Coding agents
 
 Use the `gemini` label, or comment `@gemini-cli`, for easy tasks: low severity, small, one or two files, docs, wording, config, tests, or polish.
