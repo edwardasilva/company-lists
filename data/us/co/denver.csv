@@ -2,8 +2,8 @@ id,name,website,careers_url,industry,field,city,state,region,country,hq,size_ban
 advanced-energy,Advanced Energy Industries,https://www.advancedenergy.com/,,electronics,power-electronics,Denver,CO,Denver,US,true,,true,https://www.advancedenergy.com/getattachment/5ee4b9f6-7c30-4719-96fc-dc0a7f72c528/Corporate-Fact-Sheet_2025_FINAL.pdf?lang=en-US,2026-11-09,World headquarters on the cited fact sheet.
 advanced-space,Advanced Space,https://advancedspace.com/,,aerospace-defense,space-systems,Westminster,CO,Denver,US,true,,true,https://advancedspace.com/,2026-11-09,
 agentsync,AgentSync,https://agentsync.io/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://agentsync.io/website-privacy-notice,2026-11-09,
-allosource,AlloSource,https://allosource.org/,,healthcare,medical-devices,Centennial,CO,Denver,US,true,,,https://allosource.org/contact-us/,2026-11-09,Tissue allograft headquarters.
-angi,Angi,https://www.angi.com/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://ir.angi.com/contact-us,2026-11-09,
+allosource,AlloSource,https://allosource.org/,,healthcare,,Centennial,CO,Denver,US,true,,,https://allosource.org/contact-us/,2026-11-09,Tissue allograft headquarters.
+angi,Angi,https://www.angi.com/,,software-it,,Denver,CO,Denver,US,true,,true,https://ir.angi.com/contact-us,2026-11-09,
 arrive-health,Arrive Health,https://arrivehealth.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://arrivehealth.com/contact/,2026-11-09,Formerly RxRevu; point-of-care medication access.
 arrow-electronics,Arrow Electronics,https://www.arrow.com/,,electronics,electronic-components-distribution,Centennial,CO,Denver,US,true,,true,https://www.arrow.com/company/overview/facilities/office-locations,2026-11-09,
 astroscale-us,Astroscale U.S.,https://www.astroscale-us.com/,,aerospace-defense,space-systems,Denver,CO,Denver,US,true,,true,https://www.astroscale-us.com/en/about,2026-11-09,U.S. offices listed on the about page.
@@ -35,7 +35,7 @@ fusionauth,FusionAuth,https://fusionauth.io/,,software-it,cybersecurity,Westmins
 grasshopper-health,Grasshopper Health,https://grasshopperhealth.com/,,healthcare,medical-devices,Denver,CO,Denver,US,true,,true,https://grasshopperhealth.com/grasshopper-health-contact,2026-11-09,Gait and mobility monitoring; also Omaha.
 hearthero,HeartHero,https://www.hearthero.com/,,healthcare,medical-devices,Denver,CO,Denver,US,true,,true,https://www.hearthero.com/contacts,2026-11-09,Automated external defibrillator.
 housecall-pro,Housecall Pro,https://www.housecallpro.com/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://www.housecallpro.com/contact-us/,2026-11-09,
-ibotta,Ibotta,https://ibotta.com/,,software-it,enterprise-software,Denver,CO,Denver,US,true,,true,https://investors.ibotta.com/company-information/contacts,2026-11-09,
+ibotta,Ibotta,https://ibotta.com/,,software-it,,Denver,CO,Denver,US,true,,true,https://investors.ibotta.com/company-information/contacts,2026-11-09,
 intrepid-potash,Intrepid Potash,https://www.intrepidpotash.com/,,mining-materials,mining,Denver,CO,Denver,US,true,,,https://www.intrepidpotash.com/contact/,2026-11-10,Potash producer; contact page lists a corporate headquarters line.
 je-dunn-denver,JE Dunn Construction,https://jedunn.com/,,construction-engineering,,Denver,CO,Denver,US,false,,,https://www.jedunn.com/locations,2026-11-10,Denver office; also Colorado Springs.
 kiewit-lone-tree,Kiewit,https://www.kiewit.com/,,construction-engineering,,Lone Tree,CO,Denver,US,false,,,https://www.kiewit.com/locations/,2026-11-10,Offices at Trainstation Circle.
@@ -51,7 +51,7 @@ newmont,Newmont,https://www.newmont.com/,,mining-materials,mining,Denver,CO,Denv
 nexus-pcb,NexusPCB Technologies,https://www.nexuspcb.com/,,electronics,pcb,Littleton,CO,Denver,US,true,,true,https://www.nexuspcb.com/about-us,2026-11-09,
 niocorp,NioCorp Developments,https://www.niocorp.com/,,mining-materials,mining,Centennial,CO,Denver,US,true,,,https://www.niocorp.com/contact/,2026-11-10,U.S. corporate headquarters on the contact page.
 northrop-grumman,Northrop Grumman,https://www.northropgrumman.com/,,aerospace-defense,defense-electronics,Englewood,CO,Denver,US,false,,true,https://news.northropgrumman.com/sensors/northrop-grumman-expands-colorado-footprint-to-bolster-production-of-space-ground-systems,2026-11-10,Highfield Integration Facility.
-nova-engineering,Nova Engineering,https://novaenginc.com/,,electronics,contract-manufacturing,Denver,CO,Denver,US,true,,true,https://novaenginc.com/,2026-11-09,
+nova-engineering,Nova Engineering,https://novaenginc.com/,,electronics,pcb,Denver,CO,Denver,US,true,,true,https://novaenginc.com/,2026-11-09,
 orthofi,OrthoFi,https://orthofi.com/,,healthcare,,Denver,CO,Denver,US,true,,,https://orthofi.com/about-us/,2026-11-09,Orthodontic and dental case acceptance and financing.
 outrider,Outrider,https://www.outrider.ai/,,industrial,robotics,Brighton,CO,Denver,US,true,,true,https://www.outrider.ai/privacy-notice/,2026-11-09,Autonomous yard operations.
 pathlock,Pathlock,https://pathlock.com/,,software-it,cybersecurity,Denver,CO,Denver,US,true,,true,https://pathlock.com/privacy-policy/,2026-11-09,Identity governance and application access controls.
