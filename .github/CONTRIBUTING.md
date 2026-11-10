@@ -27,6 +27,10 @@ Public company facts only. Never invent a row. No personal names, emails, or pho
 
 A public source is a page anyone can open without logging in, such as a company About or Locations page.
 
+## Releases
+
+Before cutting a release, run release-cut and land or close every `release-sweep` issue.
+
 ## Conduct
 
 Be kind and assume good intent. To report a problem with someone's behavior, use GitHub's Report content feature or message the repository owner in private.
