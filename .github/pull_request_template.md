@@ -1,16 +1,11 @@
-## Issue
+## Description
 
-<!-- Optional for outside contributors. Remove the line if there is no issue. -->
+<!--
+A short description is all a pull request needs. Maintainers review the change.
 
-Part of #
-
-## Summary
-
-Write what changed and why.
-
-## Checklist
-
-- [ ] The base branch is `main`, and the change does one thing.
-- [ ] Every new or changed row has a public `source_url` that states what the row says, and `last_verified` is the day it was checked.
-- [ ] No personal names, email addresses, or phone numbers.
-- [ ] `python3 scripts/validate.py` passes.
+Optional, if they help:
+- Which company or metro file it changes, and why.
+- The public source for each new or changed row.
+- Whether python3 scripts/validate.py passes.
+- A related issue, such as "Closes #12".
+-->

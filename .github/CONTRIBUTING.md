@@ -4,7 +4,7 @@ Thanks for helping with the company list. Anyone can add or fix a company.
 
 ## Suggest a change
 
-Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and pick a template. Say which company, which metro, and what is wrong or missing.
+Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and describe the change, such as which company, which metro, and what is wrong or missing. A short description is all it needs.
 
 ## Add or fix a company
 
@@ -13,13 +13,13 @@ Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose)
 3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
 4. Use an `industry` and `field` pair from `schema/industries.csv`. Leave `size_band` empty unless a cited page gives a headcount. `careers_url` is optional. Use the company's own jobs page, not LinkedIn or another board.
 5. Keep rows sorted by `id`.
-6. Run the check and fix anything it reports:
+6. If you can, run the check and fix anything it reports. If you skip it, maintainers run it before merging:
 
 ```bash
 python3 scripts/validate.py
 ```
 
-7. Open a pull request into `main`.
+7. Open a pull request into `main` with a short description of what changed and why. That is all a pull request needs. An issue link is optional. Maintainers review the change.
 
 A finished row looks like this, in the column order of the file header. It is an example, not a real company:
 
