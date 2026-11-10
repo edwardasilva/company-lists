@@ -43,6 +43,11 @@ Public company facts only. Never invent a row. No personal names, emails, or pho
 
 A public source is a page anyone can open without logging in, such as a company About or Locations page.
 
+## When a company changes
+
+- Closed, or no longer has a location in the region: delete the row, and say why in the pull request.
+- Acquired or renamed, and still has a location in the region: keep the row. Update `name`, `website` and `source_url`, keep the `id`, and add the old name to `notes`, such as "Formerly Acme."
+
 ## Releases
 
 Only the repository owner cuts releases.
