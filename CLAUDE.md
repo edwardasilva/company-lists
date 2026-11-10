@@ -2,6 +2,14 @@
 
 This repo is a public dataset of companies by region. Read `README.md` for the columns and `.github/CONTRIBUTING.md` for how a change lands.
 
+## Routing
+
+Use the `gemini` label, or comment `@gemini-cli`, for easy tasks: low severity, small, one or two files, docs, wording, config, tests, or polish.
+
+Use the `claude` label, or comment `@claude`, for harder work: medium or high severity, multi-file changes, design, security, workflows, or anything that needs judgment.
+
+Only the repository owner can start either workflow. Both work on a branch and open a pull request. Neither pushes to `main`, merges, tags, or cuts a release.
+
 ## Git
 
 - Work on a branch. Never push to `main`.
