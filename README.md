@@ -31,7 +31,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | --- | --- | --- |
 | `id` | yes | Lowercase slug, unique across the whole repo. Never renamed or reused |
 | `name` | yes | The company name as the company writes it |
-| `website` | yes | Home page, `https://`, ending in `/`. One row per website in a file |
+| `website` | yes | Home page, `https://`, ending in `/`. One row per company per region, with the same value in every region |
 | `careers_url` | no | The company's own careers or jobs page, not a job board |
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
@@ -59,7 +59,7 @@ One row per line keeps diffs small, and GitHub shows each file as a table. Split
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, duplicate websites, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website in a region, or the same city), a `name` or `website` that differs between regions, and that each row matches its folder and file name. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 ## Rules
 
