@@ -40,7 +40,7 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
 | `notes` | no | Short and neutral, 200 characters at most |
 
-Rows are sorted by `id`. A company with sites in two regions gets a row in each file, with a different `id` such as `acme-denver`.
+Rows are sorted by `id`. A company with sites in more than one region gets a row in each file. An `id` gets a suffix, such as `acme-denver`, only when two rows would otherwise share one.
 
 ## Why CSV
 
