@@ -1,0 +1,30 @@
+name: Links
+
+# Opens every website and source_url with scripts/check_links.py. Runs every Monday and by
+# hand. It fails on a page that is gone and on a website that redirects to another domain,
+# which usually means a rebrand, an acquisition or a closure. It is not a required check.
+on:
+  schedule:
+    - cron: "17 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  links:
+    name: Check links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Standard library only, so there is nothing to install.
+      - name: Check links
+        run: python3 scripts/check_links.py
