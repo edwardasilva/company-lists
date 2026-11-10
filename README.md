@@ -35,7 +35,7 @@ Every file has the same header, in this order. An empty cell means unknown.
 | `country` | yes | `US` for now, and it matches the folder |
 | `hq` | yes | `true` when this location is the company headquarters |
 | `size_band` | no | Employee band, such as `201-500`, only when a source states it |
-| `ee_relevant` | no | `true` when the company hires electrical or computer engineers |
+| `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
 | `last_verified` | yes | The day someone checked the row against `source_url`, `YYYY-MM-DD` |
 | `notes` | no | Short and neutral, 200 characters at most |
