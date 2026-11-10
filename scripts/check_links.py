@@ -11,12 +11,14 @@ link needs a fix.
 """
 
 import csv
-import glob
 import sys
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 from urllib.parse import urlsplit
+
+ROOT = Path(__file__).resolve().parent.parent
 
 UA = "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0"
 # Bot walls (Cloudflare, sec.gov, fcc.gov) answer a script with these codes while the
@@ -43,8 +45,13 @@ def fetch(url):
 
 def main():
     jobs = []
-    for path in sorted(glob.glob("data/*/*/*.csv")):
-        with open(path, encoding="utf-8", newline="") as f:
+    files = sorted((ROOT / "data").glob("*/*/*.csv"))
+    if not files:
+        print(f"::error::No data files found under {ROOT / 'data'}.")
+        return 1
+    for file in files:
+        path = file.relative_to(ROOT).as_posix()
+        with open(file, encoding="utf-8", newline="") as f:
             for line, row in enumerate(csv.DictReader(f), start=2):
                 for col in ("website", "source_url"):
                     jobs.append((path, line, row["id"], col, row[col]))
