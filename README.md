@@ -6,6 +6,8 @@ A plain list of companies by region: name, website, industry, field, city, state
 
 For students and new graduates looking for employers near them, starting with electrical and computer engineering.
 
+Which companies belong is in [CONTRIBUTING](.github/CONTRIBUTING.md#which-companies-belong).
+
 To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source.
 
 ## Layout
