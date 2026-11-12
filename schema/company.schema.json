@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edwardasilva/company-lists/schema/company.schema.json",
+  "title": "Company row",
+  "description": "One row of a data/<country>/<state>/<region>.csv file. Every CSV cell is a string, and an empty cell is an empty string. The column order of the CSV header is the order of x-columns.",
+  "type": "object",
+  "x-columns": [
+    "id",
+    "name",
+    "website",
+    "careers_url",
+    "industry",
+    "field",
+    "city",
+    "ee_relevant",
+    "source_url",
+    "last_verified",
+    "notes"
+  ],
+  "required": [
+    "id",
+    "name",
+    "website",
+    "careers_url",
+    "industry",
+    "field",
+    "city",
+    "ee_relevant",
+    "source_url",
+    "last_verified",
+    "notes"
+  ],
+  "x-nonempty": [
+    "id",
+    "name",
+    "website",
+    "industry",
+    "city",
+    "source_url",
+    "last_verified"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 80,
+      "description": "Stable slug, unique across the whole repo. Never reuse or rename one."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "Company name as the company writes it."
+    },
+    "website": {
+      "type": "string",
+      "pattern": "^https://[^\\s/@]+\\.[^\\s/@]+/$",
+      "description": "Company home page, https, ending in a slash, no path."
+    },
+    "careers_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(https://[^\\s/@]+\\.[^\\s/@]+(/[^\\s]*)?)?$",
+      "description": "Optional. The company's own careers or jobs page, https, not a job board."
+    },
+    "industry": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "An industry value from schema/industries.csv."
+    },
+    "field": {
+      "type": "string",
+      "pattern": "^([a-z0-9]+(-[a-z0-9]+)*)?$",
+      "description": "Optional. A field listed for that industry in schema/industries.csv."
+    },
+    "city": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "City of this location, as the source gives it."
+    },
+    "ee_relevant": {
+      "type": "string",
+      "enum": [
+        "",
+        "true",
+        "false"
+      ],
+      "description": "Optional. true when the company hires electrical or computer engineers."
+    },
+    "source_url": {
+      "type": "string",
+      "pattern": "^https://[^\\s/@]+\\.[^\\s/@]+(/[^\\s]*)?$",
+      "description": "Public page that backs the row, usually the company's own site."
+    },
+    "last_verified": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Date someone last checked the row against source_url, YYYY-MM-DD."
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Optional. Short and neutral. No personal names or contact details."
+    }
+  }
+}

@@ -1,0 +1,85 @@
+name: Add or fix a company
+description: Add a company to a region list, or fix a row. Companies only, no people.
+title: "Company: "
+body:
+  - type: markdown
+    attributes:
+      value: Public company details only. Do not add personal names, email addresses, or phone numbers.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Which company to add or fix, and what is wrong or missing. A short description is enough. The fields below are optional.
+    validations:
+      required: false
+  - type: input
+    id: name
+    attributes:
+      label: Company name (optional)
+      description: As the company writes it.
+    validations:
+      required: false
+  - type: input
+    id: website
+    attributes:
+      label: Website (optional)
+      description: The https home page, for example https://example.com/
+    validations:
+      required: false
+  - type: input
+    id: city
+    attributes:
+      label: City
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry
+      description: The values in schema/industries.csv.
+      options:
+        - aerospace-defense
+        - automotive
+        - construction-engineering
+        - consumer-products
+        - education-research
+        - electronics
+        - energy-utilities
+        - government
+        - healthcare
+        - industrial
+        - mining-materials
+        - semiconductors
+        - software-it
+        - telecommunications
+        - transportation
+  - type: input
+    id: field
+    attributes:
+      label: Field
+      description: Optional. A field listed for that industry in schema/industries.csv.
+  - type: dropdown
+    id: hq
+    attributes:
+      label: Is this location the headquarters?
+      options:
+        - "true"
+        - "false"
+  - type: dropdown
+    id: ee_relevant
+    attributes:
+      label: Does it hire electrical or computer engineers?
+      options:
+        - Not sure
+        - "true"
+        - "false"
+  - type: input
+    id: source_url
+    attributes:
+      label: Source (optional)
+      description: A public page that states the company name and city, usually the company's own site.
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Optional. Short and neutral, 200 characters at most. For a fix, say which row and what is wrong.
