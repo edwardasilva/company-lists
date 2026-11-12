@@ -3,8 +3,6 @@
   <img src="docs/brand/company-lists-lockup-outlined.svg" alt="company-lists" width="320">
 </picture>
 
-# company-lists
-
 A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It covers the Denver and Boulder metros in Colorado, the Austin and Houston metros in Texas, the Los Angeles and San Francisco Bay Area metros in California, and Northern Virginia, and it lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
