@@ -57,20 +57,13 @@ body:
       label: Field
       description: Optional. A field listed for that industry in schema/industries.csv.
   - type: dropdown
-    id: hq
-    attributes:
-      label: Is this location the headquarters?
-      options:
-        - "true"
-        - "false"
-  - type: dropdown
     id: ee_relevant
     attributes:
-      label: Does it hire electrical or computer engineers?
+      label: Is it an engineering business?
+      description: Pick true when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a public page shows such roles. Otherwise pick Not sure, and the cell stays empty.
       options:
         - Not sure
         - "true"
-        - "false"
   - type: input
     id: source_url
     attributes:

@@ -267,16 +267,24 @@ def form_options(text, field):
 
 
 def check_form(industries, props):
-    """Check that the issue form offers the same lists as the schema."""
+    """Check that every dropdown in the issue form is a schema column and offers the schema's values."""
     text = FORM.read_text(encoding="utf-8")
+    problems = []
     want = {
         "industry": sorted(industries),
     }
-    return [
+    for field in re.findall(r"^  - type: dropdown\n    id: (\S+)$", text, re.M):
+        if field not in props:
+            problems.append(f".github/ISSUE_TEMPLATE/company.yml: dropdown {field} is not a column in schema/company.schema.json")
+        elif "enum" in props[field]:
+            # Not sure stands for an empty cell.
+            want[field] = ["Not sure"] + [v for v in props[field]["enum"] if v]
+    problems += [
         f".github/ISSUE_TEMPLATE/company.yml: {field} options must be: {', '.join(expected)}"
         for field, expected in want.items()
         if form_options(text, field) != expected
     ]
+    return problems
 
 
 def main(argv):

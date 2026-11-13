@@ -31,7 +31,7 @@ Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rathe
 
 Every file has the same header, in this order. An empty cell means unknown.
 
-Files are UTF-8 without a byte order mark, with LF line endings and a final newline. Cells are comma separated, and a cell that contains a comma is wrapped in double quotes (RFC 4180). No cell contains a line break. `ee_relevant` holds `true` or `false`, or is empty.
+Files are UTF-8 without a byte order mark, with LF line endings and a final newline. Cells are comma separated, and a cell that contains a comma is wrapped in double quotes (RFC 4180). No cell contains a line break. `ee_relevant` holds `true`, or is empty.
 
 | Column | Required | Rule |
 | --- | --- | --- |
