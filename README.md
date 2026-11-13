@@ -3,7 +3,7 @@
   <img src="docs/brand/company-lists-lockup-outlined.svg" alt="company-lists" width="320">
 </picture>
 
-A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It covers the Denver and Boulder metros in Colorado, the Austin and Houston metros in Texas, the Los Angeles and San Francisco Bay Area metros in California, and Northern Virginia, and it lists companies, not job postings.
+A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It covers the Denver and Boulder metros in Colorado, the Austin and Houston metros in Texas, the Los Angeles and San Francisco Bay Area metros in California, and Northern Virginia, plus one file per state for major employers elsewhere in the United States. It lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
@@ -19,7 +19,7 @@ AI tools were used to help build this list. Please check any row you rely on aga
 
 | Path | What it is |
 | --- | --- |
-| `data/<country>/<state>/<region>.csv` | One file per metro region, such as `data/us/co/denver.csv` |
+| `data/<country>/<state>/<region>.csv` | One file per metro region, such as `data/us/co/denver.csv`, or one file for the rest of a state, such as `data/us/al/alabama.csv` |
 | `schema/company.schema.json` | The columns, their order, and the allowed values |
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
@@ -49,7 +49,9 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 
 Country, state and region come from the file path, so rows don't repeat them.
 
-A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont and Louisville. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Westminster and Wheat Ridge. `Austin` covers Austin and Round Rock. `Houston` covers Houston and Spring. `Los Angeles` covers Costa Mesa, El Segundo, Long Beach, Los Angeles, Pasadena, Redondo Beach and Rosemead. `San Francisco` covers Berkeley, Cupertino, Fremont, Livermore, Menlo Park, Mountain View, Oakland, San Jose, Santa Clara, Stanford and Sunnyvale. `Northern Virginia` covers Alexandria, Ashburn, Chantilly, Fairfax, Falls Church, Herndon, Manassas, McLean and Reston. To add a city, add it here in the same pull request as its first row.
+A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont and Louisville. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Westminster and Wheat Ridge. `Austin` covers Austin and Round Rock. `Houston` covers Houston and Spring. `Los Angeles` covers Costa Mesa, El Segundo, Long Beach, Los Angeles, Pasadena, Redondo Beach and Rosemead. `San Francisco` covers Berkeley, Cupertino, Fremont, Livermore, Menlo Park, Mountain View, Oakland, San Jose, Santa Clara, Stanford and Sunnyvale. `Northern Virginia` covers Alexandria, Ashburn, Chantilly, Fairfax, Falls Church, Herndon, Manassas, McLean and Reston. To add a city to a metro, add it here in the same pull request as its first row.
+
+A state file is named after its state, such as `data/us/al/alabama.csv`. It covers every city in that state that no metro file covers, so it needs no city list. A row inside a metro's cities goes in the metro file, not the state file.
 
 Rows are sorted by `id`. A company with sites in more than one region gets a row in each file. An `id` may carry a region suffix, such as `acme-denver`. Use one when the company has, or may later have, rows in more than one region, and always use one when two rows would otherwise share an `id`. Some existing ids carry a suffix without a second row, and they stay as they are.
 
