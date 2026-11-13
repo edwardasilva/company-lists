@@ -1,7 +1,9 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
 anduril,Anduril Industries,https://www.anduril.com/,,aerospace-defense,uncrewed-systems,Costa Mesa,,https://www.anduril.com/news/scaling-up-anduril-expands-to-new-orange-county-headquarters,2026-11-10,Defense technology and autonomous systems; headquarters at The Press in Costa Mesa.
 apex-space,Apex,https://www.apexspace.com/,,aerospace-defense,space-systems,Los Angeles,,https://www.apexspace.com/,2026-11-10,Satellite buses; Factory One production in Los Angeles.
+boeing-los-angeles,Boeing,https://www.boeing.com/,https://jobs.boeing.com/,aerospace-defense,space-systems,El Segundo,true,https://jobs.boeing.com/boeing-in-california,2026-11-13,El Segundo team designs and builds military satellites.
 caltech,Caltech,https://www.caltech.edu/,,education-research,university,Pasadena,,https://www.caltech.edu/,2026-11-10,Private research university.
+jet-propulsion-laboratory,Jet Propulsion Laboratory,https://www.jpl.nasa.gov/,,education-research,national-lab,Pasadena,true,https://www.jpl.nasa.gov/who-we-are/,2026-11-13,NASA lab near Pasadena that designs and builds spacecraft and Mars rovers.
 la-metro,LA Metro,https://www.metro.net/,,transportation,transit,Los Angeles,,https://www.metro.net/about/,2026-11-10,Bus and rail service across Los Angeles County.
 ladwp,Los Angeles Department of Water and Power,https://www.ladwp.com/,,energy-utilities,electric-utility,Los Angeles,,https://www.ladwp.com/who-we-are,2026-11-10,Municipal water and power utility.
 northrop-grumman-los-angeles,Northrop Grumman,https://www.northropgrumman.com/,,aerospace-defense,space-systems,Redondo Beach,,https://www.northropgrumman.com/careers/northrop-grumman-in-south-bay-california,2026-11-10,"South Bay sites in Redondo Beach, Manhattan Beach and El Segundo."
