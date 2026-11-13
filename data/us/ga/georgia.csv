@@ -1,8 +1,8 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
 georgia-tech-ga,Georgia Tech,https://www.gatech.edu/,,education-research,university,Atlanta,true,https://www.ece.gatech.edu/,2026-11-13,School of Electrical and Computer Engineering in Atlanta.
 honeywell-ga,Honeywell,https://www.honeywell.com/,,industrial,automation-controls,Atlanta,true,https://www.honeywell.com/us/en/careers/locations/us,2026-11-13,Building Automation headquarters in Atlanta; hosts software engineering and AI teams.
-hyundai-motor-group-metaplant-america-ga,Hyundai Motor Group Metaplant America,https://www.hmgma.com/,,automotive,electric-vehicles,Ellabell,,https://www.hmgma.com/,2026-11-13,Ellabell plant in Bryan County builds the IONIQ 5 and IONIQ 9.
-kia-georgia-ga,Kia Georgia,https://www.kiageorgia.com/,,automotive,electric-vehicles,West Point,,https://www.kiageorgia.com/,2026-11-13,Kia's flagship U.S. plant in West Point; builds gas and hybrid models plus the EV6 and EV9.
+hyundai-motor-group-metaplant-america-ga,Hyundai Motor Group Metaplant America,https://www.hmgma.com/,,automotive,electric-vehicles,Ellabell,true,https://www.hmgma.com/,2026-11-13,Ellabell plant in Bryan County builds the IONIQ 5 and IONIQ 9.
+kia-georgia-ga,Kia Georgia,https://www.kiageorgia.com/,,automotive,electric-vehicles,West Point,true,https://www.kiageorgia.com/,2026-11-13,Kia's flagship U.S. plant in West Point; builds gas and hybrid models plus the EV6 and EV9.
 qcells-ga,Qcells,https://us.qcells.com/,,energy-utilities,solar,Cartersville,true,https://us.qcells.com/,2026-11-13,Home page announces solar cell production in Cartersville.
-sk-battery-america-ga,SK Battery America,https://www.skbatteryamerica.com/,,automotive,electric-vehicles,Commerce,,https://www.skbatteryamerica.com/,2026-11-13,Battery maker with its company address in Commerce on its home page.
+sk-battery-america-ga,SK Battery America,https://www.skbatteryamerica.com/,,automotive,electric-vehicles,Commerce,true,https://www.skbatteryamerica.com/,2026-11-13,Battery maker with its company address in Commerce on its home page.
 southern-company-ga,Southern Company,https://www.southerncompany.com/,,energy-utilities,electric-utility,Atlanta,true,https://www.southerncompany.com/about.html,2026-11-13,Energy company headquartered in Atlanta per its about page.
