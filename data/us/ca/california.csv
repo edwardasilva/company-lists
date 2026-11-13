@@ -1,0 +1,7 @@
+id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
+kla-ca,KLA,https://www.kla.com/,,semiconductors,equipment,Milpitas,true,https://ir.kla.com/,2026-11-13,Milpitas headquarters on the investor page; process control for wafer and reticle manufacturing.
+nasa-ames-research-center-ca,NASA,https://www.nasa.gov/,,government,federal,Moffett Field,true,https://www.nasa.gov/ames/,2026-11-13,NASA Ames Research Center; nASA field center in Silicon Valley; aeronautics and exploration technology R&D.
+san-diego-gas-electric-ca,San Diego Gas & Electric,https://www.sdge.com/,,energy-utilities,electric-utility,San Diego,true,https://www.sdge.com/more-information/our-company/about-us,2026-11-13,Utility serving San Diego and southern Orange counties.
+smud-ca,SMUD,https://www.smud.org/,,energy-utilities,electric-utility,Sacramento,true,https://www.smud.org/en/Corporate/About-us,2026-11-13,Community-owned electric utility serving Sacramento.
+uc-san-diego-ca,UC San Diego,https://ucsd.edu/,,education-research,university,La Jolla,true,https://ece.ucsd.edu/,2026-11-13,Electrical and Computer Engineering department in the Jacobs School of Engineering.
+viasat-ca,Viasat,https://www.viasat.com/,,telecommunications,satellite-communications,Carlsbad,true,https://www.viasat.com/about/,2026-11-13,Corporate headquarters in Carlsbad; designs and builds multi-orbit satellite networks.
