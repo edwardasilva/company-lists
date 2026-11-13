@@ -1,0 +1,4 @@
+id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
+ncar-wy,NCAR,https://ncar.ucar.edu/,,education-research,national-lab,Cheyenne,true,https://www.cisl.ucar.edu/,2026-11-13,NCAR-Wyoming Supercomputing Center; computing and data storage for Earth system research.
+terrapower-wy,TerraPower,https://www.terrapower.com/,,energy-utilities,,Kemmerer,true,https://www.terrapower.com/terrapower-begins-construction-in-wyoming,2026-11-13,First Natrium reactor plant under construction in Kemmerer.
+university-of-wyoming-wy,University of Wyoming,https://www.uwyo.edu/,,education-research,university,Laramie,true,https://www.uwyo.edu/eecs/,2026-11-13,Electrical Engineering and Computer Science department; power grid research.
