@@ -13,11 +13,11 @@ If you apply the `claude` label to an issue opened by someone other than the rep
 ## Git
 
 - Work on a branch. Never push to `main`.
-- Every change reaches `main` through a pull request, and every merge is a squash merge. Only Edward merges.
+- Every change reaches `main` through a pull request, and every merge is a squash merge. Only the repository owner merges.
 - When you work from an issue, name it in the pull request body on its own line, as `Part of #N`, and add `Closes #N` when the pull request finishes the issue. Outside contributors do not need an issue link. A short description is enough.
 - Keep each pull request to one change, such as one region or one fix.
 - Do not create tags. Do not force-push or rewrite pushed history.
-- A release is cut only when Edward says so.
+- A release is cut only when the repository owner says so.
 
 ## Data
 
