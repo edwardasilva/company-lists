@@ -1,6 +1,6 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
 caterpillar-il,Caterpillar,https://www.caterpillar.com/,,industrial,machinery,Mossville,,https://www.caterpillar.com/en/company/about-caterpillar/global-footprint/united-states.html,2026-11-13,Mossville technical center and manufacturing site on the U.S. locations page.
-fermilab-il,Fermilab,https://www.fnal.gov/,,education-research,national-lab,Batavia,,https://www.fnal.gov/pub/about/index.html,2026-11-13,National laboratory on a 6800-acre site in Batavia.
+fermilab-il,Fermilab,https://www.fnal.gov/,,education-research,national-lab,Batavia,true,https://www.fnal.gov/pub/about/index.html,2026-11-13,National laboratory on a 6800-acre site in Batavia.
 john-deere-il,John Deere,https://www.deere.com/,,industrial,machinery,Moline,,https://www.deere.com/en-us/our-company/locations/us-locations,2026-11-13,Worldwide headquarters and Seeding Group and Cylinder operations in Moline.
 motorola-solutions-il,Motorola Solutions,https://www.motorolasolutions.com/,,telecommunications,network-equipment,Chicago,true,https://motorolasolutions.wd5.myworkdayjobs.com/Careers?q=engineer+Chicago,2026-11-13,Headquartered in Chicago; software engineering openings in Chicago on its careers site.
 rivian-il,Rivian,https://rivian.com/,https://careers.rivian.com/,automotive,electric-vehicles,Normal,true,https://rivian.com/stories/vehicle-plant-tour-normal-illinois,2026-11-13,Electric vehicle plant in Normal with propulsion and assembly shops.
