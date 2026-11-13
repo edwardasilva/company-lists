@@ -1,0 +1,7 @@
+id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
+eastman-tn,Eastman,https://www.eastman.com/,,mining-materials,materials,Kingsport,,https://www.eastman.com/en/who-we-are/locations,2026-11-13,Corporate headquarters plus a manufacturing site and technical service center.
+epb-tn,EPB,https://www.epb.com/,,energy-utilities,electric-utility,Chattanooga,true,https://www.epb.com/about-epb/,2026-11-13,Electric utility with an automated smart grid and a community-wide fiber network.
+fedex-tn,FedEx,https://www.fedex.com/,,software-it,enterprise-software,Memphis,true,https://www.fedex.com/en-us/about/company-structure.html,2026-11-13,"Corporate headquarters; FedEx Dataworks, which builds digital supply chain products, is also based in Memphis."
+nissan-tn,Nissan,https://www.nissanusa.com/,,automotive,,Smyrna,,https://nissanmanufacturing.com/,2026-11-13,"Vehicle assembly plant with about 6,550 employees; Nissan North America is headquartered in Franklin."
+oak-ridge-national-laboratory-tn,Oak Ridge National Laboratory,https://www.ornl.gov/,https://www.ornl.gov/careers-at-ornl/,education-research,national-lab,Oak Ridge,true,https://www.ornl.gov/,2026-11-13,DOE national laboratory doing energy and national security research and development.
+university-of-tennessee-knoxville-tn,"University of Tennessee, Knoxville",https://www.utk.edu/,,education-research,university,Knoxville,true,https://eecs.utk.edu/,2026-11-13,Min H. Kao Department of Electrical Engineering and Computer Science.
