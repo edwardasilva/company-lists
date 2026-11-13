@@ -60,7 +60,6 @@
     },
     "careers_url": {
       "type": "string",
-      "format": "uri",
       "pattern": "^(https://[^\\s/@]+\\.[^\\s/@]+(/[^\\s]*)?)?$",
       "description": "Optional. The company's own careers or jobs page, https, not a job board."
     },
@@ -84,10 +83,9 @@
       "type": "string",
       "enum": [
         "",
-        "true",
-        "false"
+        "true"
       ],
-      "description": "Optional. true when the company hires electrical or computer engineers."
+      "description": "Optional. true when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise."
     },
     "source_url": {
       "type": "string",
