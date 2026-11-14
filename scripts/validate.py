@@ -49,11 +49,24 @@ def load_schema():
     return schema["x-columns"], set(schema["x-nonempty"]), schema["properties"]
 
 
+INDUSTRY_HEADER = ["industry", "field", "label"]
+
+
 def load_industries():
+    """Return (industries, pairs), or (None, set()) when the file is missing or its header is wrong.
+
+    check_industries() reports those problems.
+    """
     pairs = set()
+    if not INDUSTRIES.is_file():
+        return None, pairs
     with INDUSTRIES.open(encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
-            pairs.add((row["industry"], row["field"]))
+        reader = csv.reader(f)
+        if next(reader, None) != INDUSTRY_HEADER:
+            return None, pairs
+        for cells in reader:
+            if len(cells) == 3:
+                pairs.add((cells[0], cells[1]))
     industries = {industry for industry, _ in pairs}
     return industries, pairs
 
@@ -215,9 +228,10 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
 
         catalog.append((rel, line, row, (want_country, want_state)))
 
-        if row["industry"] and row["industry"] not in industries:
+        # industries is None when schema/industries.csv is unreadable; check_industries() reports it.
+        if industries is not None and row["industry"] and row["industry"] not in industries:
             err(line, f"industry '{row['industry']}' is not in schema/industries.csv")
-        elif row["field"] and (row["industry"], row["field"]) not in pairs:
+        elif industries is not None and row["field"] and (row["industry"], row["field"]) not in pairs:
             err(line, f"field '{row['field']}' is not listed for industry '{row['industry']}' in schema/industries.csv")
 
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", row["last_verified"]):
@@ -273,10 +287,12 @@ def check_repeats(catalog):
 
 def check_industries():
     problems = []
+    if not INDUSTRIES.is_file():
+        return ["schema/industries.csv: is missing"]
     with INDUSTRIES.open(encoding="utf-8", newline="") as f:
         reader = csv.reader(f)
         header = next(reader, None)
-        if header != ["industry", "field", "label"]:
+        if header != INDUSTRY_HEADER:
             return ["schema/industries.csv: header must be industry,field,label"]
         rows = list(reader)
     keys = [(r[0], r[1]) for r in rows if len(r) == 3]
@@ -307,11 +323,12 @@ def form_options(text, field):
 
 def check_form(industries, props):
     """Check that every dropdown in the issue form is a schema column and offers the schema's values."""
+    if not FORM.is_file():
+        return [".github/ISSUE_TEMPLATE/company.yml: is missing"]
     text = FORM.read_text(encoding="utf-8")
     problems = []
-    want = {
-        "industry": sorted(industries),
-    }
+    # Without a readable schema/industries.csv there is nothing to compare the industry options to.
+    want = {} if industries is None else {"industry": sorted(industries)}
     for field in re.findall(r"^  - type: dropdown\n    id: (\S+)$", text, re.M):
         if field not in props:
             problems.append(f".github/ISSUE_TEMPLATE/company.yml: dropdown {field} is not a column in schema/company.schema.json")
