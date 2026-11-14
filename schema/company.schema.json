@@ -77,7 +77,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 60,
-      "description": "City of this location, as the source gives it."
+      "description": "City of this location, as the source gives it. For a site on a military base, arsenal, test range or space center, the installation name, with abbreviations spelled out, such as Air Force Base, not AFB."
     },
     "ee_relevant": {
       "type": "string",

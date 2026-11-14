@@ -44,6 +44,8 @@ def fetch(url):
 
 
 def main():
+    # Print each line at once, so a run cancelled at the job timeout keeps what it printed.
+    sys.stdout.reconfigure(line_buffering=True)
     jobs = []
     files = sorted((ROOT / "data").glob("*/*/*.csv"))
     if not files:
@@ -55,23 +57,30 @@ def main():
             for line, row in enumerate(csv.DictReader(f), start=2):
                 for col in ("website", "source_url"):
                     jobs.append((path, line, row["id"], col, row[col]))
+    # Many rows share a URL, so fetch each one once and report it on every row that uses it.
+    # Results print in file order as they arrive, so a cancelled run still shows what it found.
+    pool = ThreadPoolExecutor(16)
+    urls = {}
+    for job in jobs:
+        if job[4] not in urls:
+            urls[job[4]] = pool.submit(fetch, job[4])
     bad = 0
-    with ThreadPoolExecutor(8) as pool:
-        results = pool.map(lambda job: fetch(job[4]), jobs)
-        for (path, line, rid, col, url), (code, final) in zip(jobs, results):
-            where = f"{path}:{line}: {rid} {col} {url}"
-            if code is None or code in SOFT or code >= 500:
-                print(f"::warning::{where} could not be checked ({code or final})")
-            elif code >= 400:
-                bad += 1
-                print(f"::error::{where} answers HTTP {code}")
-            elif col == "website" and site(final) != site(url):
-                bad += 1
-                print(
-                    f"::error::{where} redirects to another site, {final}. "
-                    "Check for a rebrand, an acquisition or a closure."
-                )
-    print(f"{len(jobs)} links checked, {bad} to fix.")
+    for path, line, rid, col, url in jobs:
+        code, final = urls[url].result()
+        where = f"{path}:{line}: {rid} {col} {url}"
+        if code is None or code in SOFT or code >= 500:
+            print(f"::warning::{where} could not be checked ({code or final})")
+        elif code >= 400:
+            bad += 1
+            print(f"::error::{where} answers HTTP {code}")
+        elif col == "website" and site(final) != site(url):
+            bad += 1
+            print(
+                f"::error::{where} redirects to another site, {final}. "
+                "Check for a rebrand, an acquisition or a closure."
+            )
+    pool.shutdown()
+    print(f"{len(jobs)} links checked ({len(urls)} unique), {bad} to fix.")
     return 1 if bad else 0
 
 
