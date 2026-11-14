@@ -1,3 +1,6 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
 brown-university-ri,Brown University,https://www.brown.edu/,,education-research,university,Providence,,https://engineering.brown.edu/about,2026-11-13,School of Engineering in Providence; interdisciplinary engineering research.
+kvh-industries-ri,KVH Industries,https://www.kvh.com/,,telecommunications,satellite-communications,Bristol,true,https://www.kvh.com/contact-us/,2026-11-14,Maritime satellite communications company; world headquarters in Bristol on the contact page.
+raytheon-ri,Raytheon,https://www.rtx.com/,,aerospace-defense,defense-electronics,Portsmouth,true,https://www.rtx.com/news/2025/03/24/simulating-the-sea,2026-11-14,Center for undersea research in Portsmouth; sonar and undersea systems with test facilities.
+seacorp-ri,SEACORP,https://www.seacorp.com/,,aerospace-defense,defense-electronics,Middletown,true,https://www.seacorp.com/,2026-11-14,Defense engineering for combat systems and electronic warfare; headquarters in Middletown.
 university-of-rhode-island-ri,University of Rhode Island,https://www.uri.edu/,,education-research,university,Kingston,,https://web.uri.edu/engineering/,2026-11-13,College of Engineering in Kingston; ocean engineering and robotic sensor work.
