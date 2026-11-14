@@ -1,16 +1,19 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
-ambiq,Ambiq,https://ambiq.com/,,semiconductors,design,Austin,,https://ambiq.com/about-us/,2026-11-10,Low-power chips for edge AI devices; main headquarters in Austin.
-amd-austin,AMD,https://www.amd.com/,,semiconductors,design,Austin,,https://www.amd.com/en/corporate/locations.html,2026-11-10,Several Austin offices on the company locations page.
-arm-austin,Arm,https://www.arm.com/,,semiconductors,design,Austin,,https://www.arm.com/company/offices,2026-11-10,Austin office on the company offices page.
-austin-energy,Austin Energy,https://austinenergy.com/,,energy-utilities,electric-utility,Austin,,https://austinenergy.com/about,2026-11-10,Electric utility run as a department of the City of Austin.
-cirrus-logic,Cirrus Logic,https://www.cirrus.com/,,semiconductors,design,Austin,,https://investor.cirrus.com/news-and-events/investor-news/news-details/2026/Cirrus-Logic-Reports-Fiscal-Second-Quarter-Revenue-of-559-5-Million/default.aspx,2026-11-10,Mixed-signal and audio chips; headquarters stated in a company press release.
-dell-technologies,Dell Technologies,https://www.dell.com/,,software-it,cloud-infrastructure,Round Rock,,https://www.dell.com/en-us/blog/authors/dell-technologies/,2026-11-10,"PCs, servers, storage and IT services."
-ercot,ERCOT,https://www.ercot.com/,,energy-utilities,electric-utility,Austin,,https://www.ercot.com/about/contact,2026-11-10,Texas grid operator; facilities in Austin and Taylor.
-infinitum,Infinitum,https://goinfinitum.com/,,industrial,machinery,Austin,,https://goinfinitum.com/contact-us/,2026-11-10,Electric motors and motor drives; Austin address on contact page.
-micron-austin,Micron Technology,https://www.micron.com/,,semiconductors,,Austin,,https://www.micron.com/about/locations,2026-11-10,Memory and storage chips; Austin office on the locations page.
-nxp-austin,NXP Semiconductors,https://www.nxp.com/,,semiconductors,fabrication,Austin,,https://www.nxp.com/company/about-nxp/worldwide-locations/united-states:USA,2026-11-10,Two wafer fabrication facilities in Austin.
-samsung-austin-semiconductor,Samsung Austin Semiconductor,https://semiconductor.samsung.com/,,semiconductors,fabrication,Austin,,https://semiconductor.samsung.com/sas/,2026-11-10,Foundry developing and producing chips in Austin.
-silicon-labs,Silicon Labs,https://www.silabs.com/,,semiconductors,design,Austin,,https://www.silabs.com/about-us,2026-11-10,Wireless connectivity chips for IoT.
-solarwinds,SolarWinds,https://www.solarwinds.com/,,software-it,enterprise-software,Austin,,https://www.solarwinds.com/company/contact-us,2026-11-10,IT management software; global headquarters on contact page.
-tesla,Tesla,https://www.tesla.com/,,automotive,electric-vehicles,Austin,,https://www.tesla.com/giga-texas,2026-11-10,"Gigafactory Texas, described as the company global headquarters."
-university-of-texas-at-austin,The University of Texas at Austin,https://www.utexas.edu/,,education-research,university,Austin,,https://www.utexas.edu/,2026-11-10,Public research university.
+ambiq,Ambiq,https://ambiq.com/,,semiconductors,design,Austin,true,https://ambiq.com/about-us/,2026-11-10,Low-power chips for edge AI devices; main headquarters in Austin.
+amd-austin,AMD,https://www.amd.com/,,semiconductors,design,Austin,true,https://www.amd.com/en/corporate/locations.html,2026-11-10,Several Austin offices on the company locations page.
+apple-austin,Apple,https://www.apple.com/,,consumer-products,consumer-electronics,Austin,true,https://www.apple.com/newsroom/2018/12/apple-to-build-new-campus-in-austin-and-add-jobs-across-the-us/,2026-11-14,Austin campus with engineering and R&D roles per a company press release; largest Apple site outside California.
+arm-austin,Arm,https://www.arm.com/,,semiconductors,design,Austin,true,https://www.arm.com/company/offices,2026-11-10,Austin office on the company offices page.
+austin-energy,Austin Energy,https://austinenergy.com/,,energy-utilities,electric-utility,Austin,true,https://austinenergy.com/about,2026-11-10,Electric utility run as a department of the City of Austin.
+cirrus-logic,Cirrus Logic,https://www.cirrus.com/,,semiconductors,design,Austin,true,https://investor.cirrus.com/news-and-events/investor-news/news-details/2026/Cirrus-Logic-Reports-Fiscal-Second-Quarter-Revenue-of-559-5-Million/default.aspx,2026-11-10,Mixed-signal and audio chips; headquarters stated in a company press release.
+dell-technologies,Dell Technologies,https://www.dell.com/,,software-it,cloud-infrastructure,Round Rock,true,https://www.dell.com/en-us/blog/authors/dell-technologies/,2026-11-10,"PCs, servers, storage and IT services."
+ercot,ERCOT,https://www.ercot.com/,,energy-utilities,electric-utility,Austin,true,https://www.ercot.com/about/contact,2026-11-10,Texas grid operator; facilities in Austin and Taylor.
+hyliion-austin,Hyliion,https://www.hyliion.com/,,industrial,machinery,Austin,true,https://www.hyliion.com/,2026-11-14,Designs and develops linear generator power systems; headquarters in Austin on the home page.
+infinitum,Infinitum,https://goinfinitum.com/,,industrial,machinery,Austin,true,https://goinfinitum.com/contact-us/,2026-11-10,Electric motors and motor drives; Austin address on contact page.
+micron-austin,Micron Technology,https://www.micron.com/,,semiconductors,,Austin,true,https://www.micron.com/about/locations,2026-11-10,Memory and storage chips; Austin office on the locations page.
+ni-austin,NI,https://www.ni.com/,,electronics,test-measurement,Austin,true,https://www.ni.com/en/contact-us.html,2026-11-14,Test and measurement company now part of Emerson; Austin address on the contact page.
+nxp-austin,NXP Semiconductors,https://www.nxp.com/,,semiconductors,fabrication,Austin,true,https://www.nxp.com/company/about-nxp/worldwide-locations/united-states:USA,2026-11-10,Two wafer fabrication facilities in Austin.
+samsung-austin-semiconductor,Samsung Austin Semiconductor,https://semiconductor.samsung.com/,,semiconductors,fabrication,Austin,true,https://semiconductor.samsung.com/sas/,2026-11-10,Foundry developing and producing chips in Austin.
+silicon-labs,Silicon Labs,https://www.silabs.com/,,semiconductors,design,Austin,true,https://www.silabs.com/about-us,2026-11-10,Wireless connectivity chips for IoT.
+solarwinds,SolarWinds,https://www.solarwinds.com/,,software-it,enterprise-software,Austin,true,https://www.solarwinds.com/company/contact-us,2026-11-10,IT management software; global headquarters on contact page.
+tesla,Tesla,https://www.tesla.com/,,automotive,electric-vehicles,Austin,true,https://www.tesla.com/giga-texas,2026-11-10,"Gigafactory Texas, described as the company global headquarters."
+university-of-texas-at-austin,The University of Texas at Austin,https://www.utexas.edu/,,education-research,university,Austin,true,https://www.utexas.edu/,2026-11-10,Public research university.
