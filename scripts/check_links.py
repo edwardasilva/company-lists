@@ -47,7 +47,7 @@ def main():
     # Print each line at once, so a run cancelled at the job timeout keeps what it printed.
     sys.stdout.reconfigure(line_buffering=True)
     jobs = []
-    files = sorted((ROOT / "data").glob("*/*/*.csv"))
+    files = sorted((ROOT / "data").glob("*/*.csv"))
     if not files:
         print(f"::error::No data files found under {ROOT / 'data'}.")
         return 1

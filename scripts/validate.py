@@ -22,10 +22,13 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "company.schema.json"
 INDUSTRIES = ROOT / "schema" / "industries.csv"
+STATES = ROOT / "schema" / "states.csv"
 DATA = ROOT / "data"
 FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "company.yml"
-# Folders use lowercase ISO country and USPS state codes. Rows no longer store them.
+# The country folder is a lowercase ISO code. schema/states.csv maps each file name to its
+# USPS state code. Rows do not store either.
 COUNTRIES = {"us"}
+SLUG = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 USPS = {
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID",
     "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
@@ -41,20 +44,29 @@ PHONE = re.compile(r"(\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b|\+\d[\d
 URL_FIELDS = ("website", "careers_url", "source_url")
 
 
-def region_label(slug):
-    return slug.replace("-", " ").title()
-
-
 def load_schema():
     schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
     return schema["x-columns"], set(schema["x-nonempty"]), schema["properties"]
 
 
+INDUSTRY_HEADER = ["industry", "field", "label"]
+
+
 def load_industries():
+    """Return (industries, pairs), or (None, set()) when the file is missing or its header is wrong.
+
+    check_industries() reports those problems.
+    """
     pairs = set()
+    if not INDUSTRIES.is_file():
+        return None, pairs
     with INDUSTRIES.open(encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
-            pairs.add((row["industry"], row["field"]))
+        reader = csv.reader(f)
+        if next(reader, None) != INDUSTRY_HEADER:
+            return None, pairs
+        for cells in reader:
+            if len(cells) == 3:
+                pairs.add((cells[0], cells[1]))
     industries = {industry for industry, _ in pairs}
     return industries, pairs
 
@@ -82,7 +94,47 @@ def site_key(url):
     return host[4:] if host.startswith("www.") else host
 
 
-def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog):
+def load_states():
+    """Read schema/states.csv. Returns ({file: code}, problems)."""
+    rel = STATES.relative_to(ROOT).as_posix()
+    if not STATES.is_file():
+        return {}, [f"{rel}: is missing"]
+    raw = STATES.read_bytes()
+    problems = []
+    if raw.startswith(b"\xef\xbb\xbf"):
+        problems.append(f"{rel}: starts with a byte order mark; save as UTF-8 without BOM")
+    if b"\r" in raw:
+        problems.append(f"{rel}: has CR line endings; use LF")
+    if raw and not raw.endswith(b"\n"):
+        problems.append(f"{rel}: does not end with a newline")
+    reader = csv.reader(io.StringIO(raw.decode("utf-8-sig"), newline=""))
+    if next(reader, None) != ["file", "code", "name"]:
+        return {}, problems + [f"{rel}: header must be file,code,name"]
+    states, codes, files = {}, {}, []
+    for cells in reader:
+        line = reader.line_num
+        if len(cells) != 3 or not all(cells):
+            problems.append(f"{rel}:{line}: every row needs file, code and name")
+            continue
+        stem, code, _ = cells
+        files.append(stem)
+        if not SLUG.fullmatch(stem):
+            problems.append(f"{rel}:{line}: file '{stem}' is not a lowercase slug")
+        if code not in USPS:
+            problems.append(f"{rel}:{line}: code '{code}' is not an uppercase USPS code")
+        if stem in states:
+            problems.append(f"{rel}:{line}: file '{stem}' is listed twice")
+            continue
+        if code in codes:
+            problems.append(f"{rel}:{line}: code '{code}' is already used by '{codes[code]}'")
+        states[stem] = code
+        codes.setdefault(code, stem)
+    if files != sorted(files):
+        problems.append(f"{rel}: rows must be sorted by file")
+    return states, problems
+
+
+def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states):
     problems = []
     rel = path.relative_to(ROOT).as_posix()
 
@@ -103,20 +155,20 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
         return problems, 0
 
     parts = path.relative_to(DATA).parts
-    if len(parts) != 3 or not parts[2].endswith(".csv"):
-        err(1, "must be data/<country>/<state>/<region>.csv")
+    if len(parts) > 2:
+        err(1, "is in a subfolder; move it to data/us/<state>.csv, such as data/us/colorado.csv")
         return problems, 0
-    country_slug, state_slug, region_slug = parts[0], parts[1], parts[2][:-4]
+    if len(parts) != 2:
+        err(1, "must be data/us/<state>.csv, such as data/us/colorado.csv")
+        return problems, 0
+    country_slug, file_slug = parts[0], parts[1][:-4]
     if country_slug not in COUNTRIES:
         err(1, f"country folder '{country_slug}' is not a supported lowercase country code")
         return problems, 0
-    if state_slug != state_slug.lower() or state_slug.upper() not in USPS:
-        err(1, f"state folder '{state_slug}' is not a lowercase USPS code")
+    if file_slug not in states:
+        err(1, f"file name '{parts[1]}' is not listed in schema/states.csv")
         return problems, 0
-    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", region_slug):
-        err(1, f"region file name '{parts[2]}' is not a lowercase slug")
-        return problems, 0
-    want_country, want_state, want_region = country_slug.upper(), state_slug.upper(), region_slug
+    want_country, want_state = country_slug.upper(), states[file_slug]
 
     # newline="" leaves line splitting to the csv module, so only real line ends count.
     reader = csv.reader(io.StringIO(text, newline=""))
@@ -174,11 +226,12 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             err(line, f"rows must be sorted by id; '{rid}' comes after '{prev_id}'")
         prev_id = rid
 
-        catalog.append((rel, line, row, (want_country, want_state, want_region)))
+        catalog.append((rel, line, row, (want_country, want_state)))
 
-        if row["industry"] and row["industry"] not in industries:
+        # industries is None when schema/industries.csv is unreadable; check_industries() reports it.
+        if industries is not None and row["industry"] and row["industry"] not in industries:
             err(line, f"industry '{row['industry']}' is not in schema/industries.csv")
-        elif row["field"] and (row["industry"], row["field"]) not in pairs:
+        elif industries is not None and row["field"] and (row["industry"], row["field"]) not in pairs:
             err(line, f"field '{row['field']}' is not listed for industry '{row['industry']}' in schema/industries.csv")
 
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", row["last_verified"]):
@@ -196,6 +249,8 @@ def check_repeats(catalog):
     """Check repeated companies across all files.
 
     A company is the same when its website host or its lowercased name matches.
+    It may appear at most once per city in a state, and every row for it must
+    use the same name and website.
     Returns (files, message) pairs; the message starts with the first location.
     """
     found = []
@@ -219,25 +274,25 @@ def check_repeats(catalog):
         for i, a in enumerate(entries):
             for b in entries[i + 1:]:
                 ra, rb = a[2], b[2]
-                loc_a, loc_b = a[3], b[3]
-                if loc_a == loc_b:
-                    add(a, b, "region", f"same company is listed twice in region {region_label(loc_a[2])} ({label} '{ra[label]}')")
+                state_a, state_b = a[3], b[3]
+                if state_a == state_b and ra["city"].lower() == rb["city"].lower():
+                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {state_a[1]} ({label} '{ra[label]}')")
                     continue
-                if (ra["city"].lower(), loc_a[1]) == (rb["city"].lower(), loc_b[1]):
-                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {loc_a[1]} ({label} '{ra[label]}')")
                 if ra["name"] != rb["name"]:
-                    add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another region")
+                    add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another city")
                 if ra["website"] != rb["website"]:
-                    add(a, b, "website", f"website {ra['website']} must match {rb['website']} for the same company in another region")
+                    add(a, b, "website", f"website {ra['website']} must match {rb['website']} for the same company in another city")
     return found
 
 
 def check_industries():
     problems = []
+    if not INDUSTRIES.is_file():
+        return ["schema/industries.csv: is missing"]
     with INDUSTRIES.open(encoding="utf-8", newline="") as f:
         reader = csv.reader(f)
         header = next(reader, None)
-        if header != ["industry", "field", "label"]:
+        if header != INDUSTRY_HEADER:
             return ["schema/industries.csv: header must be industry,field,label"]
         rows = list(reader)
     keys = [(r[0], r[1]) for r in rows if len(r) == 3]
@@ -249,7 +304,7 @@ def check_industries():
         problems.append("schema/industries.csv: has a duplicate industry and field pair")
     for industry, field in keys:
         for value in (industry, field):
-            if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", value):
+            if not SLUG.fullmatch(value):
                 problems.append(f"schema/industries.csv: '{value}' is not a lowercase slug")
     return problems
 
@@ -268,11 +323,12 @@ def form_options(text, field):
 
 def check_form(industries, props):
     """Check that every dropdown in the issue form is a schema column and offers the schema's values."""
+    if not FORM.is_file():
+        return [".github/ISSUE_TEMPLATE/company.yml: is missing"]
     text = FORM.read_text(encoding="utf-8")
     problems = []
-    want = {
-        "industry": sorted(industries),
-    }
+    # Without a readable schema/industries.csv there is nothing to compare the industry options to.
+    want = {} if industries is None else {"industry": sorted(industries)}
     for field in re.findall(r"^  - type: dropdown\n    id: (\S+)$", text, re.M):
         if field not in props:
             problems.append(f".github/ISSUE_TEMPLATE/company.yml: dropdown {field} is not a column in schema/company.schema.json")
@@ -290,7 +346,8 @@ def check_form(industries, props):
 def main(argv):
     columns, nonempty, props = load_schema()
     industries, pairs = load_industries()
-    problems = check_industries()
+    states, problems = load_states()
+    problems += check_industries()
     problems += check_form(industries, props)
     # Ids are unique across the repo, so every file is read even when only some are named.
     files = sorted(DATA.rglob("*.csv"))
@@ -305,7 +362,7 @@ def main(argv):
     rows = 0
     catalog = []
     for path in files:
-        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog)
+        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states)
         if not named or path.resolve() in named:
             problems.extend(found)
         rows += count

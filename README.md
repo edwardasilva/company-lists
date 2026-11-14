@@ -3,7 +3,7 @@
   <img src="docs/brand/company-lists-lockup-outlined.svg" alt="company-lists" width="320">
 </picture>
 
-A plain list of companies by region: name, website, industry, field, city, state and a public source for each row. It covers the Denver and Boulder metros in Colorado, the Austin and Houston metros in Texas, the Los Angeles and San Francisco Bay Area metros in California, and Northern Virginia, plus one file per state for major employers elsewhere in the United States. It lists companies, not job postings.
+A plain list of companies by state: name, website, industry, field, city, state and a public source for each row. It has one file per state in the United States, and every row names its city. It lists companies, not job postings.
 
 [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
@@ -19,7 +19,8 @@ AI tools were used to help build this list. Please check any row you rely on aga
 
 | Path | What it is |
 | --- | --- |
-| `data/<country>/<state>/<region>.csv` | One file per metro region, such as `data/us/co/denver.csv`, or one file for the rest of a state, such as `data/us/al/alabama.csv` |
+| `data/us/<state>.csv` | One file per state, named after the state, such as `data/us/colorado.csv` |
+| `schema/states.csv` | Every state file name, with its USPS code and state name |
 | `schema/company.schema.json` | The columns, their order, and the allowed values |
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
@@ -37,7 +38,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | --- | --- | --- |
 | `id` | yes | Lowercase slug, unique across the whole repo. Never renamed or reused |
 | `name` | yes | The company name as the company writes it |
-| `website` | yes | Home page, `https://`, ending in `/`. One row per company per region, with the same value in every region |
+| `website` | yes | Home page, `https://`, ending in `/`. One row per company per city, with the same value in every row for that company |
 | `careers_url` | no | The company's own careers or jobs page, not a job board |
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
@@ -47,17 +48,15 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `last_verified` | yes | The day the row was checked against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
-Country, state and region come from the file path, so rows don't repeat them.
+The country comes from the folder, and the state from the file name through `schema/states.csv`, so rows don't repeat them.
 
-A region is a list of cities. `Boulder` covers Boulder, Broomfield, Lafayette, Longmont and Louisville. `Denver` covers the rest of the Denver metro, including Aurora, Brighton, Centennial, Denver, Edgewater, Englewood, Golden, Greenwood Village, Lakewood, Littleton, Lone Tree, Sedalia, Westminster and Wheat Ridge. `Austin` covers Austin and Round Rock. `Houston` covers Houston and Spring. `Los Angeles` covers Costa Mesa, El Segundo, Long Beach, Los Angeles, Pasadena, Redondo Beach and Rosemead. `San Francisco` covers Berkeley, Cupertino, Fremont, Livermore, Menlo Park, Mountain View, Oakland, San Jose, Santa Clara, Stanford and Sunnyvale. `Northern Virginia` covers Alexandria, Ashburn, Chantilly, Fairfax, Falls Church, Herndon, Manassas, McLean and Reston. To add a city to a metro, add it here in the same pull request as its first row.
+Each state has exactly one file, named after the state, such as `data/us/colorado.csv`. It covers every city in that state.
 
-A state file is named after its state, such as `data/us/al/alabama.csv`. It covers every city in that state that no metro file covers, so it needs no city list. A row inside a metro's cities goes in the metro file, not the state file.
-
-Rows are sorted by `id`. A company with sites in more than one region gets a row in each file. An `id` may carry a region suffix, such as `acme-denver`. Use one when the company has, or may later have, rows in more than one region, and always use one when two rows would otherwise share an `id`. Some existing ids carry a suffix without a second row, and they stay as they are.
+Rows are sorted by `id`. A company with sites in more than one city gets a row for each city. An `id` may carry a place suffix, such as `acme-denver` or `acme-co`. Use one when the company has, or may later have, more than one row, and always use one when two rows would otherwise share an `id`. Some existing ids carry a suffix without a second row, and they stay as they are.
 
 ## Why CSV
 
-One row per line keeps diffs small, and GitHub shows each file as a table. Splitting by region keeps each file small, and two people adding different regions never touch the same file.
+One row per line keeps diffs small, and GitHub shows each file as a table. Splitting by state keeps each file small, and two people adding different states never touch the same file.
 
 ## Check the data
 
@@ -65,7 +64,7 @@ One row per line keeps diffs small, and GitHub shows each file as a table. Split
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website in a region, or the same city and state in two files), a `name` or `website` that differs between regions, and that each file path is `data/<country>/<state>/<region>.csv`. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website for the same city and state), a `name` or `website` that differs between rows for the same company, that each file path is `data/us/<state>.csv` with its file name listed in `schema/states.csv`, and that `schema/states.csv` lists each file name and state code once. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 The Links workflow runs `python3 scripts/check_links.py` every Monday. It is not a required check. You can run it by hand with `python3 scripts/check_links.py` from the repo root.
 
