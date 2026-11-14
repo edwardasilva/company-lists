@@ -1,2 +1,5 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
+idexx-me,IDEXX,https://www.idexx.com/,,healthcare,medical-devices,Westbrook,true,https://www.idexx.com/en/about-idexx/contact-idexx/,2026-11-14,Veterinary diagnostic analyzers and software; corporate headquarters in Westbrook on the contact page.
+lanco-integrated-me,Lanco Integrated,https://lancointegrated.com/,,industrial,automation-controls,Westbrook,true,https://lancointegrated.com/,2026-11-14,Automation systems maker; headquarters in Westbrook on the home page.
+maine-maritime-academy-me,Maine Maritime Academy,https://mainemaritime.edu/,,education-research,university,Castine,,https://mainemaritime.edu/,2026-11-14,Public college in Castine offering engineering degree programs.
 university-of-maine-me,University of Maine,https://umaine.edu/,,education-research,university,Orono,true,https://umaine.edu/mcec/depts/ece/,2026-11-13,Electrical and computer engineering department; Orono in the department address.
