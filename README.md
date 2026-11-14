@@ -41,7 +41,7 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `careers_url` | no | The company's own careers or jobs page, not a job board |
 | `industry` | yes | An `industry` from `schema/industries.csv` |
 | `field` | no | A `field` listed for that industry |
-| `city` | yes | City of this location |
+| `city` | yes | City of this location. For a site on a military base, arsenal, test range or space center, use the installation name as the source gives it, with abbreviations spelled out, such as `Eglin Air Force Base`, not `Eglin AFB` |
 | `ee_relevant` | no | `true` when the company's business is hardware, power, RF, embedded, controls, or software engineering, or a cited page shows such roles. Empty otherwise |
 | `source_url` | yes | A public `https://` page that backs the row |
 | `last_verified` | yes | The day the row was checked against `source_url`, `YYYY-MM-DD`, in UTC |
