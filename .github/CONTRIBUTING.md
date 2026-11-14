@@ -37,7 +37,7 @@ A company gets one row for each city where it has a location, and never two rows
 
 Use the `claude` label, or comment `@claude`, to hand an issue or pull request to the coding agent.
 
-Only the repository owner can start the workflow. They may hand any issue to the coding agent, including an issue opened by someone outside the project, after reading that issue in full. It works on a branch and opens a pull request. It never pushes to `main`, merges, tags, or cuts a release.
+Only the repository owner can start the workflow. The owner may hand any issue to the coding agent, including one opened by someone outside the project, after reading it in full. The agent works on a branch and opens a pull request. It never pushes to `main`, merges, tags, or cuts a release.
 
 ## Which companies belong
 
@@ -45,7 +45,17 @@ A company belongs when a public page shows a location in the row's city where pe
 
 ## What belongs here
 
-Public company facts only. Never invent a row. No personal names, emails, or phone numbers. The validator rejects emails and phone numbers. No job postings yet. Prefer the company's own website as `source_url`, and never cite a page behind a login or paywall. Never rename or reuse an `id`. No emoji, and keep wording neutral.
+These rules apply to every row and every change.
+
+- Public company facts only. No personal names, email addresses, or phone numbers, in any column. The validator rejects email addresses and phone numbers.
+- Never invent data. Do not guess a company, a city, a website, a date or a size.
+- Before you add or change a row, open its source and check that it says what the row says.
+- Prefer the company's own website as `source_url`, and never cite a page behind a login or paywall.
+- Leave an optional cell empty when no source states it.
+- To add an `industry` or `field` value, change `schema/industries.csv` in the same pull request and say why.
+- Never rename or reuse an `id`.
+- No job postings yet.
+- No emoji, and keep wording neutral.
 
 A public source is a page anyone can open without logging in, such as a company About or Locations page.
 
