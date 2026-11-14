@@ -19,7 +19,8 @@ AI tools were used to help build this list. Please check any row you rely on aga
 
 | Path | What it is |
 | --- | --- |
-| `data/<country>/<state>/<file>.csv` | One file per state, named after the state, such as `data/us/co/colorado.csv` |
+| `data/us/<state>.csv` | One file per state, named after the state, such as `data/us/colorado.csv` |
+| `schema/states.csv` | Every state file name, with its USPS code and state name |
 | `schema/company.schema.json` | The columns, their order, and the allowed values |
 | `schema/industries.csv` | Every allowed `industry` and `field` pair |
 | `scripts/validate.py` | Checks every data file. Python standard library only |
@@ -47,9 +48,9 @@ Files are UTF-8 without a byte order mark, with LF line endings and a final newl
 | `last_verified` | yes | The day the row was checked against `source_url`, `YYYY-MM-DD`, in UTC |
 | `notes` | no | Short and neutral, 200 characters at most |
 
-Country and state come from the file path, so rows don't repeat them.
+The country comes from the folder, and the state from the file name through `schema/states.csv`, so rows don't repeat them.
 
-Each state folder holds exactly one file, named after its state, such as `data/us/co/colorado.csv`. It covers every city in that state.
+Each state has exactly one file, named after the state, such as `data/us/colorado.csv`. It covers every city in that state.
 
 Rows are sorted by `id`. A company with sites in more than one city gets a row for each city. An `id` may carry a place suffix, such as `acme-denver` or `acme-co`. Use one when the company has, or may later have, more than one row, and always use one when two rows would otherwise share an `id`. Some existing ids carry a suffix without a second row, and they stay as they are.
 
@@ -63,7 +64,7 @@ One row per line keeps diffs small, and GitHub shows each file as a table. Split
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website for the same city and state), a `name` or `website` that differs between rows for the same company, that each file path is `data/<country>/<state>/<file>.csv`, and that each state folder holds exactly one file. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website for the same city and state), a `name` or `website` that differs between rows for the same company, that each file path is `data/us/<state>.csv` with its file name listed in `schema/states.csv`, and that `schema/states.csv` lists each file name and state code once. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 The Links workflow runs `python3 scripts/check_links.py` every Monday. It is not a required check. You can run it by hand with `python3 scripts/check_links.py` from the repo root.
 
