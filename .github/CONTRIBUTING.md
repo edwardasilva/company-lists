@@ -9,7 +9,7 @@ Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose)
 ## Add or fix a company
 
 1. Fork the repo (or cut a short branch if you have write access).
-2. Edit the state file, such as `data/us/co/colorado.csv`, and put the location's city in `city`. Each state has one file. For a state with no file yet, copy the header from an existing file into `data/<country>/<state>/<file>.csv`, named after the state.
+2. Edit the state file, such as `data/us/colorado.csv`, and put the location's city in `city`. Each state has one file, and all 50 exist. A new state file goes at `data/us/<state>.csv`, named after the state, with the header of an existing file, and needs its row in `schema/states.csv`.
 3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
 4. Use an `industry` and `field` pair from `schema/industries.csv`. `careers_url` is optional. Use the company's own jobs page, not LinkedIn or another board.
 5. Keep rows sorted by `id`.

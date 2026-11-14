@@ -22,10 +22,13 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "company.schema.json"
 INDUSTRIES = ROOT / "schema" / "industries.csv"
+STATES = ROOT / "schema" / "states.csv"
 DATA = ROOT / "data"
 FORM = ROOT / ".github" / "ISSUE_TEMPLATE" / "company.yml"
-# Folders use lowercase ISO country and USPS state codes. Rows no longer store them.
+# The country folder is a lowercase ISO code. schema/states.csv maps each file name to its
+# USPS state code. Rows do not store either.
 COUNTRIES = {"us"}
+SLUG = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 USPS = {
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID",
     "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO",
@@ -78,7 +81,47 @@ def site_key(url):
     return host[4:] if host.startswith("www.") else host
 
 
-def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog):
+def load_states():
+    """Read schema/states.csv. Returns ({file: code}, problems)."""
+    rel = STATES.relative_to(ROOT).as_posix()
+    if not STATES.is_file():
+        return {}, [f"{rel}: is missing"]
+    raw = STATES.read_bytes()
+    problems = []
+    if raw.startswith(b"\xef\xbb\xbf"):
+        problems.append(f"{rel}: starts with a byte order mark; save as UTF-8 without BOM")
+    if b"\r" in raw:
+        problems.append(f"{rel}: has CR line endings; use LF")
+    if raw and not raw.endswith(b"\n"):
+        problems.append(f"{rel}: does not end with a newline")
+    reader = csv.reader(io.StringIO(raw.decode("utf-8-sig"), newline=""))
+    if next(reader, None) != ["file", "code", "name"]:
+        return {}, problems + [f"{rel}: header must be file,code,name"]
+    states, codes, files = {}, {}, []
+    for cells in reader:
+        line = reader.line_num
+        if len(cells) != 3 or not all(cells):
+            problems.append(f"{rel}:{line}: every row needs file, code and name")
+            continue
+        stem, code, _ = cells
+        files.append(stem)
+        if not SLUG.fullmatch(stem):
+            problems.append(f"{rel}:{line}: file '{stem}' is not a lowercase slug")
+        if code not in USPS:
+            problems.append(f"{rel}:{line}: code '{code}' is not an uppercase USPS code")
+        if stem in states:
+            problems.append(f"{rel}:{line}: file '{stem}' is listed twice")
+            continue
+        if code in codes:
+            problems.append(f"{rel}:{line}: code '{code}' is already used by '{codes[code]}'")
+        states[stem] = code
+        codes.setdefault(code, stem)
+    if files != sorted(files):
+        problems.append(f"{rel}: rows must be sorted by file")
+    return states, problems
+
+
+def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states):
     problems = []
     rel = path.relative_to(ROOT).as_posix()
 
@@ -99,20 +142,20 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
         return problems, 0
 
     parts = path.relative_to(DATA).parts
-    if len(parts) != 3 or not parts[2].endswith(".csv"):
-        err(1, "must be data/<country>/<state>/<file>.csv")
+    if len(parts) > 2:
+        err(1, "is in a subfolder; move it to data/us/<state>.csv, such as data/us/colorado.csv")
         return problems, 0
-    country_slug, state_slug, file_slug = parts[0], parts[1], parts[2][:-4]
+    if len(parts) != 2:
+        err(1, "must be data/us/<state>.csv, such as data/us/colorado.csv")
+        return problems, 0
+    country_slug, file_slug = parts[0], parts[1][:-4]
     if country_slug not in COUNTRIES:
         err(1, f"country folder '{country_slug}' is not a supported lowercase country code")
         return problems, 0
-    if state_slug != state_slug.lower() or state_slug.upper() not in USPS:
-        err(1, f"state folder '{state_slug}' is not a lowercase USPS code")
+    if file_slug not in states:
+        err(1, f"file name '{parts[1]}' is not listed in schema/states.csv")
         return problems, 0
-    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", file_slug):
-        err(1, f"file name '{parts[2]}' is not a lowercase slug")
-        return problems, 0
-    want_country, want_state = country_slug.upper(), state_slug.upper()
+    want_country, want_state = country_slug.upper(), states[file_slug]
 
     # newline="" leaves line splitting to the csv module, so only real line ends count.
     reader = csv.reader(io.StringIO(text, newline=""))
@@ -245,7 +288,7 @@ def check_industries():
         problems.append("schema/industries.csv: has a duplicate industry and field pair")
     for industry, field in keys:
         for value in (industry, field):
-            if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", value):
+            if not SLUG.fullmatch(value):
                 problems.append(f"schema/industries.csv: '{value}' is not a lowercase slug")
     return problems
 
@@ -286,7 +329,8 @@ def check_form(industries, props):
 def main(argv):
     columns, nonempty, props = load_schema()
     industries, pairs = load_industries()
-    problems = check_industries()
+    states, problems = load_states()
+    problems += check_industries()
     problems += check_form(industries, props)
     # Ids are unique across the repo, so every file is read even when only some are named.
     files = sorted(DATA.rglob("*.csv"))
@@ -296,22 +340,12 @@ def main(argv):
     stray = [p for p in DATA.rglob("*") if p.is_file() and p.suffix != ".csv" and p.name != ".gitkeep"]
     for p in stray:
         problems.append(f"{p.relative_to(ROOT).as_posix()}: only .csv files belong under data/")
-    # One file per state: every state folder holds exactly one CSV.
-    folders = {p: [] for p in DATA.glob("*/*") if p.is_dir()}
-    for path in files:
-        folders.setdefault(path.parent, []).append(path)
-    for folder, paths in sorted(folders.items()):
-        if not paths and not named:
-            problems.append(f"{folder.relative_to(ROOT).as_posix()}: has no CSV file; a state folder holds one")
-        elif len(paths) > 1 and (not named or any(p.resolve() in named for p in paths)):
-            names = ", ".join(p.name for p in paths)
-            problems.append(f"{folder.relative_to(ROOT).as_posix()}: has {len(paths)} CSV files ({names}); keep one file per state")
     seen_ids = {}
     today = datetime.date.today() + datetime.timedelta(days=1)  # allow for time zones
     rows = 0
     catalog = []
     for path in files:
-        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog)
+        found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states)
         if not named or path.resolve() in named:
             problems.extend(found)
         rows += count
