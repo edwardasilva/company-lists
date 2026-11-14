@@ -4,12 +4,12 @@ Thanks for helping with the company list. Anyone can add or fix a company.
 
 ## Suggest a change
 
-Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and describe the change, such as which company, which metro, and what is wrong or missing. A short description is all it needs.
+Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose) and describe the change, such as which company, which city, and what is wrong or missing. A short description is all it needs.
 
 ## Add or fix a company
 
 1. Fork the repo (or cut a short branch if you have write access).
-2. Edit the metro file, such as `data/us/co/denver.csv`, or the state file for a city outside every metro, such as `data/us/al/alabama.csv`. For a new metro, copy the header from an existing file into `data/<country>/<state>/<region>.csv`.
+2. Edit the state file, such as `data/us/co/colorado.csv`, and put the location's city in `city`. Each state has one file. For a state with no file yet, copy the header from an existing file into `data/<country>/<state>/<file>.csv`, named after the state.
 3. For each row, put a public page that states the company name and city in `source_url`, and set `last_verified` to today's date (`YYYY-MM-DD`).
 4. Use an `industry` and `field` pair from `schema/industries.csv`. `careers_url` is optional. Use the company's own jobs page, not LinkedIn or another board.
 5. Keep rows sorted by `id`.
@@ -29,9 +29,9 @@ example-co,Example Co,https://example.com/,,electronics,test-measurement,Denver,
 
 Write `notes` as one or two short phrases that say what the source shows or what the company makes. Start with a capital letter, join phrases with a semicolon, and end with a period.
 
-## One row per company per region
+## One row per company per city
 
-A company gets one row in each region where it has a location, and never two rows in the same region. Rows for the same company in different regions must have exactly the same `name` and `website`, so tools can merge them. The validator fails when a company repeats in a region, repeats for the same city and state in two files, or has a different `name` or `website` between regions. Two rows are the same company when their website host or their name, ignoring case, matches.
+A company gets one row for each city where it has a location, and never two rows for the same city in a state. Rows for the same company must have exactly the same `name` and `website`, so tools can merge them. The validator fails when a company repeats for the same city and state, or has a different `name` or `website` between its rows. Two rows are the same company when their website host or their name, ignoring case, matches.
 
 ## Coding agents
 
@@ -41,7 +41,7 @@ Only the repository owner can start the workflow. They may hand any issue to the
 
 ## Which companies belong
 
-A company belongs when a public page shows a location in the region where people do engineering work. A mailing address, an HR-only office, or a network point of presence is not enough. Universities and government labs count when they meet the same test.
+A company belongs when a public page shows a location in the row's city where people do engineering work. A mailing address, an HR-only office, or a network point of presence is not enough. Universities and government labs count when they meet the same test.
 
 ## What belongs here
 
@@ -51,8 +51,8 @@ A public source is a page anyone can open without logging in, such as a company 
 
 ## When a company changes
 
-- Closed, or no longer has a location in the region: delete the row, and say why in the pull request.
-- Acquired or renamed, and still has a location in the region: keep the row. Update `name`, `website` and `source_url`, keep the `id`, and add the old name to `notes`, such as "Formerly Acme."
+- Closed, or no longer has a location in that city: delete the row, and say why in the pull request.
+- Acquired or renamed, and still has a location in that city: keep the row. Update `name`, `website` and `source_url`, keep the `id`, and add the old name to `notes`, such as "Formerly Acme."
 
 ## Releases
 

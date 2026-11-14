@@ -1,5 +1,5 @@
 name: Add or fix a company
-description: Add a company to a region list, or fix a row. Companies only, no people.
+description: Add a company to a state list, or fix a row. Companies only, no people.
 title: "Company: "
 body:
   - type: markdown

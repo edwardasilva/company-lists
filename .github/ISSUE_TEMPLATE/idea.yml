@@ -1,5 +1,5 @@
 name: Idea or suggestion
-description: Suggest a region, a field, or a change to the dataset.
+description: Suggest a city, a field, or a change to the dataset.
 body:
   - type: textarea
     id: idea

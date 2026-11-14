@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/edwardasilva/company-lists/schema/company.schema.json",
   "title": "Company row",
-  "description": "One row of a data/<country>/<state>/<region>.csv file. Every CSV cell is a string, and an empty cell is an empty string. The column order of the CSV header is the order of x-columns.",
+  "description": "One row of a data/<country>/<state>/<file>.csv file, the one file for that state. Every CSV cell is a string, and an empty cell is an empty string. The column order of the CSV header is the order of x-columns.",
   "type": "object",
   "x-columns": [
     "id",

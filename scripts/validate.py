@@ -41,10 +41,6 @@ PHONE = re.compile(r"(\+?1[\s.-]?)?\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b|\+\d[\d
 URL_FIELDS = ("website", "careers_url", "source_url")
 
 
-def region_label(slug):
-    return slug.replace("-", " ").title()
-
-
 def load_schema():
     schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
     return schema["x-columns"], set(schema["x-nonempty"]), schema["properties"]
@@ -104,19 +100,19 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
 
     parts = path.relative_to(DATA).parts
     if len(parts) != 3 or not parts[2].endswith(".csv"):
-        err(1, "must be data/<country>/<state>/<region>.csv")
+        err(1, "must be data/<country>/<state>/<file>.csv")
         return problems, 0
-    country_slug, state_slug, region_slug = parts[0], parts[1], parts[2][:-4]
+    country_slug, state_slug, file_slug = parts[0], parts[1], parts[2][:-4]
     if country_slug not in COUNTRIES:
         err(1, f"country folder '{country_slug}' is not a supported lowercase country code")
         return problems, 0
     if state_slug != state_slug.lower() or state_slug.upper() not in USPS:
         err(1, f"state folder '{state_slug}' is not a lowercase USPS code")
         return problems, 0
-    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", region_slug):
-        err(1, f"region file name '{parts[2]}' is not a lowercase slug")
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", file_slug):
+        err(1, f"file name '{parts[2]}' is not a lowercase slug")
         return problems, 0
-    want_country, want_state, want_region = country_slug.upper(), state_slug.upper(), region_slug
+    want_country, want_state = country_slug.upper(), state_slug.upper()
 
     # newline="" leaves line splitting to the csv module, so only real line ends count.
     reader = csv.reader(io.StringIO(text, newline=""))
@@ -174,7 +170,7 @@ def check_file(path, columns, nonempty, props, industries, pairs, seen_ids, toda
             err(line, f"rows must be sorted by id; '{rid}' comes after '{prev_id}'")
         prev_id = rid
 
-        catalog.append((rel, line, row, (want_country, want_state, want_region)))
+        catalog.append((rel, line, row, (want_country, want_state)))
 
         if row["industry"] and row["industry"] not in industries:
             err(line, f"industry '{row['industry']}' is not in schema/industries.csv")
@@ -196,6 +192,8 @@ def check_repeats(catalog):
     """Check repeated companies across all files.
 
     A company is the same when its website host or its lowercased name matches.
+    It may appear at most once per city in a state, and every row for it must
+    use the same name and website.
     Returns (files, message) pairs; the message starts with the first location.
     """
     found = []
@@ -219,16 +217,14 @@ def check_repeats(catalog):
         for i, a in enumerate(entries):
             for b in entries[i + 1:]:
                 ra, rb = a[2], b[2]
-                loc_a, loc_b = a[3], b[3]
-                if loc_a == loc_b:
-                    add(a, b, "region", f"same company is listed twice in region {region_label(loc_a[2])} ({label} '{ra[label]}')")
+                state_a, state_b = a[3], b[3]
+                if state_a == state_b and ra["city"].lower() == rb["city"].lower():
+                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {state_a[1]} ({label} '{ra[label]}')")
                     continue
-                if (ra["city"].lower(), loc_a[1]) == (rb["city"].lower(), loc_b[1]):
-                    add(a, b, "city", f"same company is listed twice for {ra['city']}, {loc_a[1]} ({label} '{ra[label]}')")
                 if ra["name"] != rb["name"]:
-                    add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another region")
+                    add(a, b, "name", f"name '{ra['name']}' must match '{rb['name']}' for the same company in another city")
                 if ra["website"] != rb["website"]:
-                    add(a, b, "website", f"website {ra['website']} must match {rb['website']} for the same company in another region")
+                    add(a, b, "website", f"website {ra['website']} must match {rb['website']} for the same company in another city")
     return found
 
 
@@ -300,6 +296,16 @@ def main(argv):
     stray = [p for p in DATA.rglob("*") if p.is_file() and p.suffix != ".csv" and p.name != ".gitkeep"]
     for p in stray:
         problems.append(f"{p.relative_to(ROOT).as_posix()}: only .csv files belong under data/")
+    # One file per state: every state folder holds exactly one CSV.
+    folders = {p: [] for p in DATA.glob("*/*") if p.is_dir()}
+    for path in files:
+        folders.setdefault(path.parent, []).append(path)
+    for folder, paths in sorted(folders.items()):
+        if not paths and not named:
+            problems.append(f"{folder.relative_to(ROOT).as_posix()}: has no CSV file; a state folder holds one")
+        elif len(paths) > 1 and (not named or any(p.resolve() in named for p in paths)):
+            names = ", ".join(p.name for p in paths)
+            problems.append(f"{folder.relative_to(ROOT).as_posix()}: has {len(paths)} CSV files ({names}); keep one file per state")
     seen_ids = {}
     today = datetime.date.today() + datetime.timedelta(days=1)  # allow for time zones
     rows = 0
