@@ -4,7 +4,7 @@ name: Claude
 # to an issue, or comments @claude on an issue, a pull request, or a review. Only the owner's
 # label and comments start it, so a stranger cannot run it on this public repo. Claude works on a
 # claude/ branch and opens a pull request. It never pushes to main, merges, tags, or releases.
-# Workflows run from main, so this file does nothing until it merges.
+# Workflows run from main, so a change to this file takes effect only once it merges.
 on:
   # opened: a new issue from the owner with @claude in its title or body.
   issues:
