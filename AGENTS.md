@@ -21,14 +21,7 @@ If you apply the `claude` label to an issue opened by someone other than the rep
 
 ## Data
 
-- Never invent data. Do not guess a company, a city, a website, a date or a size.
-- Every row needs a public `source_url` and a `last_verified` date. Open the source and check it says what the row says before you add or change the row.
-- Prefer the company website as the source. Do not cite pages behind a login or paywall.
-- Public company information only. No personal names, email addresses, or phone numbers, in any column.
-- Leave an optional cell empty when no source states it.
-- Use only `industry` and `field` values from `schema/industries.csv`. To add one, change that file in the same pull request and say why.
-- Keep rows sorted by `id`. Never rename or reuse an `id`.
-- No job postings yet.
+Never invent data. Follow the steps under Add or fix a company and the rules under [What belongs here](.github/CONTRIBUTING.md#what-belongs-here), both in `.github/CONTRIBUTING.md`.
 
 ## Checks
 

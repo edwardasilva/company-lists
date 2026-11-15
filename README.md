@@ -3,17 +3,11 @@
   <img src="docs/brand/company-lists-lockup-outlined.svg" alt="company-lists" width="320">
 </picture>
 
-A plain list of companies by state: name, website, industry, field, city, state and a public source for each row. It has one file per state in the United States, and every row names its city. It lists companies, not job postings.
+A plain list of companies by US state, for students and new graduates looking for employers near them. It starts with electrical and computer engineering. There is one CSV file per state, and each row is one company in one city, with its name, website, industry, field and a public source. It lists companies, not job postings. As of v0.0.5 the 50 state files hold 851 rows, and Colorado has the most, with 136.
 
-[eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
+To use it, open the file for your state, such as `data/us/colorado.csv`. GitHub shows it as a table. The rules for which companies belong are in [CONTRIBUTING](.github/CONTRIBUTING.md#which-companies-belong). To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source. [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
-For students and new graduates looking for employers near them, starting with electrical and computer engineering.
-
-Which companies belong is in [CONTRIBUTING](.github/CONTRIBUTING.md#which-companies-belong).
-
-To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source.
-
-AI tools were used to help build this list. Please check any row you rely on against its `source_url`, and send a fix when you find one.
+AI tools helped build this list. `scripts/validate.py` checks every row against the schema, and `scripts/check_links.py` reports dead links, but neither checks that a source says what its row says. Check any row you rely on against its `source_url`, and send a fix if it is wrong.
 
 ## Layout
 
@@ -26,7 +20,7 @@ AI tools were used to help build this list. Please check any row you rely on aga
 | `scripts/validate.py` | Checks every data file. Python standard library only |
 | `scripts/check_links.py` | Opens every website and source_url and reports dead links and cross-domain redirects. Python standard library only |
 
-Releases are git tags, such as `v0.1.0`. To depend on this data, pin a tag rather than `main`.
+Releases are git tags, such as `v0.0.5`. To depend on this data, pin a tag rather than `main`.
 
 ## Columns
 
@@ -64,17 +58,26 @@ One row per line keeps diffs small, and GitHub shows each file as a table. Split
 python3 scripts/validate.py
 ```
 
-It checks the header, required cells, allowed values, URLs, unique ids, sorted order, repeated companies (same name or website for the same city and state), a `name` or `website` that differs between rows for the same company, that each file path is `data/us/<state>.csv` with its file name listed in `schema/states.csv`, and that `schema/states.csv` lists each file name and state code once. It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
+It checks:
+
+- the header
+- required cells
+- allowed values
+- URLs
+- unique ids
+- sorted order
+- repeated companies (same name or website for the same city and state)
+- a `name` or `website` that differs between rows for the same company
+- that each file path is `data/us/<state>.csv`, with its file name listed in `schema/states.csv`
+- that `schema/states.csv` lists each file name and state code once
+
+It rejects email addresses and phone numbers. The Check workflow runs it on every pull request into `main`.
 
 The Links workflow runs `python3 scripts/check_links.py` every Monday. It is not a required check. You can run it by hand with `python3 scripts/check_links.py` from the repo root.
 
 ## Rules
 
-- Never invent data. Every row cites a public page, and `last_verified` says when the row was checked.
-- Public company information only. No personal names, emails, or phone numbers.
-- Every change reaches `main` through a pull request, and every merge is a squash merge.
-
-How to add rows is in [CONTRIBUTING](.github/CONTRIBUTING.md).
+Never invent data, and list only public company information. The full data rules are in [CONTRIBUTING](.github/CONTRIBUTING.md#what-belongs-here), with the steps to add a row. Every change reaches `main` through a pull request, and every merge is a squash merge.
 
 ## License
 
