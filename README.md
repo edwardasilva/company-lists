@@ -3,7 +3,7 @@
   <img src="docs/brand/company-lists-lockup-outlined.svg" alt="company-lists" width="320">
 </picture>
 
-A plain list of companies by US state, for students and new graduates looking for employers near them. It starts with electrical and computer engineering. There is one CSV file per state, and each row is one company in one city, with its name, website, industry, field and a public source. It lists companies, not job postings. As of v0.0.5 the 50 state files hold 851 rows, and Colorado has the most, with 136.
+A plain list of companies by US state, for students and new graduates looking for employers near them. It starts with electrical and computer engineering. There is one CSV file per state, and each row is one company in one city, with its name, website, industry, field and a public source. It lists companies, not job postings. As of v0.0.1 the 50 state files hold 1,993 rows, and Colorado has the most, with 152.
 
 To use it, open the file for your state, such as `data/us/colorado.csv`. GitHub shows it as a table. The rules for which companies belong are in [CONTRIBUTING](.github/CONTRIBUTING.md#which-companies-belong). To report a wrong, closed, or missing company, [open an issue](https://github.com/edwardasilva/company-lists/issues) with the row's `id` and a public source. [eeprep](https://github.com/edwardasilva/eeprep) includes this repo as a submodule at `company-lists`.
 
@@ -20,15 +20,15 @@ AI tools helped build this list. `scripts/validate.py` checks every row against 
 | `scripts/validate.py` | Checks every data file. Python standard library only |
 | `scripts/check_links.py` | Opens every website and source_url and reports dead links and cross-domain redirects. Python standard library only |
 
-Releases are git tags, such as `v0.0.5`. To depend on this data, pin a tag rather than `main`.
+Releases are git tags, such as `v0.0.1`. To depend on this data, pin a tag rather than `main`.
 
 ## Fetch the data
 
 Every file has a stable raw address at a tag, so a script or a coding agent can read it without cloning the repo:
 
-- One state: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/data/us/colorado.csv`
-- The state files and their USPS codes: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/schema/states.csv`
-- The columns: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/schema/company.schema.json`
+- One state: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.1/data/us/colorado.csv`
+- The state files and their USPS codes: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.1/schema/states.csv`
+- The columns: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.1/schema/company.schema.json`
 
 `schema/company.schema.json` is a JSON Schema for one row. Its `x-columns` list gives the header in order, `x-nonempty` lists the cells that must not be empty, and each property gives the pattern or allowed values that `scripts/validate.py` checks. `schema/industries.csv` lists every allowed `industry` and `field` pair. Each row names the public page it comes from in `source_url` and the day it was checked in `last_verified`.
 
