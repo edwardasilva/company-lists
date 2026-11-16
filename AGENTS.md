@@ -35,5 +35,6 @@ python3 scripts/validate.py
 
 - No emoji anywhere: files, commits, pull requests, comments, or output.
 - Do not put bot or tool names in repo text or commit messages.
+- The repository owner is the sole author of every commit. Do not add a `Co-authored-by` line, a session link, or any other trailer to a commit message or a pull request body, and write the squash-merge message without one.
 - Keep wording neutral and short. Examples use neutral names such as Alex Doe, with they and them.
 - Never print or commit secrets, tokens, or environment variables.
