@@ -1,6 +1,6 @@
 # Rules for agents
 
-This repo is a public dataset of companies by state, one CSV per state. Read `README.md` for the columns and `.github/CONTRIBUTING.md` for how a change lands.
+This repo is a public dataset of companies by state, one CSV per state. Read `README.md` for the columns and `.github/CONTRIBUTING.md` for how a change lands. The columns are also in `schema/company.schema.json`, which `scripts/validate.py` reads, and the allowed `industry` and `field` pairs are in `schema/industries.csv`.
 
 ## Routing
 
@@ -35,5 +35,6 @@ python3 scripts/validate.py
 
 - No emoji anywhere: files, commits, pull requests, comments, or output.
 - Do not put bot or tool names in repo text or commit messages.
+- The repository owner is the sole author of every commit. Do not add a `Co-authored-by` line, a session link, or any other trailer to a commit message or a pull request body, and write the squash-merge message without one.
 - Keep wording neutral and short. Examples use neutral names such as Alex Doe, with they and them.
 - Never print or commit secrets, tokens, or environment variables.

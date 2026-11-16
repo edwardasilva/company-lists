@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/edwardasilva/company-lists/schema/company.schema.json",
+  "$id": "https://raw.githubusercontent.com/edwardasilva/company-lists/main/schema/company.schema.json",
   "title": "Company row",
   "description": "One row of a data/us/<state>.csv file, such as data/us/colorado.csv, the one file for that state. Every CSV cell is a string, and an empty cell is an empty string. The column order of the CSV header is the order of x-columns.",
   "type": "object",

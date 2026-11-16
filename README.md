@@ -22,6 +22,16 @@ AI tools helped build this list. `scripts/validate.py` checks every row against 
 
 Releases are git tags, such as `v0.0.5`. To depend on this data, pin a tag rather than `main`.
 
+## Fetch the data
+
+Every file has a stable raw address at a tag, so a script or a coding agent can read it without cloning the repo:
+
+- One state: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/data/us/colorado.csv`
+- The state files and their USPS codes: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/schema/states.csv`
+- The columns: `https://raw.githubusercontent.com/edwardasilva/company-lists/v0.0.5/schema/company.schema.json`
+
+`schema/company.schema.json` is a JSON Schema for one row. Its `x-columns` list gives the header in order, `x-nonempty` lists the cells that must not be empty, and each property gives the pattern or allowed values that `scripts/validate.py` checks. `schema/industries.csv` lists every allowed `industry` and `field` pair. Each row names the public page it comes from in `source_url` and the day it was checked in `last_verified`.
+
 ## Columns
 
 Every file has the same header, in this order. An empty cell means unknown.

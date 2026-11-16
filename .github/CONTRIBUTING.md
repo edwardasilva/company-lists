@@ -19,7 +19,7 @@ Open an [issue](https://github.com/edwardasilva/company-lists/issues/new/choose)
 python3 scripts/validate.py
 ```
 
-7. Open a pull request into `main` with a short description of what changed and why. That is all a pull request needs. An issue link is optional. Maintainers review the change.
+7. Open a pull request into `main` with a short description of what changed and why. That is all a pull request needs. An issue link is optional. Maintainers review the change, and each accepted change goes in as one squashed commit. The squashed commit names the repository owner as its only author, so leave `Co-authored-by` lines and other trailers out of your commit messages and the pull request description.
 
 A finished row looks like this, in the column order of the file header. It is an example, not a real company:
 

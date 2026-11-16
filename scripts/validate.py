@@ -354,6 +354,8 @@ def main(argv):
     named = {Path(a).resolve() for a in argv}
     for p in sorted(named - {f.resolve() for f in files}):
         problems.append(f"{p}: not a data file under data/")
+    # The files whose problems and rows count: the named ones, or every file when none is named.
+    selected = [p for p in files if not named or p.resolve() in named]
     stray = [p for p in DATA.rglob("*") if p.is_file() and p.suffix != ".csv" and p.name != ".gitkeep"]
     for p in stray:
         problems.append(f"{p.relative_to(ROOT).as_posix()}: only .csv files belong under data/")
@@ -363,21 +365,20 @@ def main(argv):
     catalog = []
     for path in files:
         found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states)
-        if not named or path.resolve() in named:
+        if path in selected:
             problems.extend(found)
-        rows += count
-    named_rel = {p.relative_to(ROOT).as_posix() for p in named if p.is_relative_to(ROOT)}
+            rows += count
+    selected_rel = {p.relative_to(ROOT).as_posix() for p in selected}
     for rels, msg in check_repeats(catalog):
-        if not named or rels & named_rel:
+        if rels & selected_rel:
             problems.append(msg)
 
     if problems:
         for problem in problems:
             print(f"::error::{problem}" if "GITHUB_ACTIONS" in os.environ else problem)
-        print(f"[ERROR] {len(problems)} problem(s) in {len(files)} file(s).")
+        print(f"[ERROR] {len(problems)} problem(s) in {len(selected)} file(s).")
         return 1
-    checked = len([p for p in files if not named or p.resolve() in named])
-    print(f"[SUCCESS] {checked} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
+    print(f"[SUCCESS] {len(selected)} file(s), {rows} row(s), {len(pairs)} industry fields. All valid.")
     return 0
 
 
