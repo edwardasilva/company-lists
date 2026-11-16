@@ -1,6 +1,7 @@
 id,name,website,careers_url,industry,field,city,ee_relevant,source_url,last_verified,notes
 accure,Accure Acne,https://accureacne.com/,,healthcare,medical-devices,Boulder,true,https://accureacne.com/contact-us/,2026-11-09,Acne laser therapy system.
 advanced-energy,Advanced Energy Industries,https://www.advancedenergy.com/,,electronics,power-electronics,Denver,true,https://www.advancedenergy.com/getattachment/5ee4b9f6-7c30-4719-96fc-dc0a7f72c528/Corporate-Fact-Sheet_2025_FINAL.pdf?lang=en-US,2026-11-09,World headquarters on the cited fact sheet.
+advanced-energy-fort-collins,Advanced Energy Industries,https://www.advancedenergy.com/,,electronics,power-electronics,Fort Collins,true,https://www.advancedenergy.com/en-us/about/,2026-11-16,Fort Collins location listed on the about page.
 advanced-space,Advanced Space,https://advancedspace.com/,,aerospace-defense,space-systems,Westminster,true,https://advancedspace.com/,2026-11-09,
 agentsync,AgentSync,https://agentsync.io/,,software-it,enterprise-software,Denver,true,https://agentsync.io/website-privacy-notice,2026-11-09,
 alchemer,Alchemer,https://www.alchemer.com/,,software-it,enterprise-software,Louisville,true,https://www.alchemer.com/support/,2026-11-09,
@@ -56,6 +57,7 @@ ghx,GHX,https://www.ghx.com/,,healthcare,,Louisville,,https://www.ghx.com/media/
 gogo,Gogo,https://www.gogoair.com/,,telecommunications,,Broomfield,true,https://www.gogoair.com/about/contact-us,2026-11-10,In-flight connectivity; headquarters label on the contact page.
 google-boulder,Google,https://www.google.com/,,software-it,cloud-infrastructure,Boulder,true,https://about.google/company-info/locations/,2026-11-15,Two Boulder offices on Pearl Street and Walnut Street.
 grasshopper-health,Grasshopper Health,https://grasshopperhealth.com/,,healthcare,medical-devices,Denver,true,https://grasshopperhealth.com/grasshopper-health-contact,2026-11-09,Gait and mobility monitoring; also Omaha.
+hach,Hach,https://www.hach.com/,,electronics,test-measurement,Loveland,true,https://www.hach.com/,2026-11-16,Headquarters address on the home page; water quality instruments.
 hearthero,HeartHero,https://www.hearthero.com/,,healthcare,medical-devices,Denver,true,https://www.hearthero.com/contacts,2026-11-09,Automated external defibrillator.
 housecall-pro,Housecall Pro,https://www.housecallpro.com/,,software-it,enterprise-software,Denver,true,https://www.housecallpro.com/contact-us/,2026-11-09,
 ibotta,Ibotta,https://ibotta.com/,,software-it,,Denver,true,https://investors.ibotta.com/company-information/contacts,2026-11-09,
@@ -75,6 +77,7 @@ lunar-outpost,Lunar Outpost,https://www.lunaroutpost.com/,,aerospace-defense,spa
 martin-martin,Martin/Martin,https://www.martinmartin.com/,,construction-engineering,engineering-services,Lakewood,,https://www.martinmartin.com/offices/denver/,2026-11-10,Listed as the Denver headquarters office at a Lakewood street address; also Fort Collins and Vail.
 meadowlark-optics-frederick,Meadowlark Optics,https://www.meadowlark.com/,,electronics,,Frederick,true,https://www.meadowlark.com/contact-us/,2026-11-15,Polarization optics and liquid crystal devices.
 merrick,Merrick & Company,https://www.merrick.com/,,construction-engineering,engineering-services,Greenwood Village,,https://www.merrick.com/locations/,2026-11-10,Corporate headquarters on the locations page.
+microchip-technology-colorado-springs,Microchip Technology,https://www.microchip.com/,https://www.microchip.com/en-us/about/careers,semiconductors,fabrication,Colorado Springs,true,https://www.microchip.com/en-us/about/careers/microchip-around-the-world/americas/colorado-us,2026-11-16,Campus with two clean rooms that fabricate 6-inch wafers.
 mma-space,MMA Space,https://www.mmaspace.com/,,aerospace-defense,space-systems,Broomfield,true,https://www.mmaspace.com/,2026-11-09,Formerly MMA Design.
 national-laboratory-of-the-rockies,National Laboratory of the Rockies,https://www.nlr.gov/,,education-research,national-lab,Golden,,https://www.nlr.gov/about/golden,2026-11-10,Administrative offices and most research laboratories at the Golden campus; formerly the National Renewable Energy Laboratory (NREL).
 newmont,Newmont,https://www.newmont.com/,,mining-materials,mining,Denver,,https://www.newmont.com/about-us/contact-us/default.aspx,2026-11-10,Corporate headquarters on the contact page.
@@ -106,6 +109,7 @@ royal-gold,Royal Gold,https://www.royalgold.com/,,mining-materials,mining,Denver
 salas-obrien-boulder,Salas O'Brien,https://salasobrien.com/,,construction-engineering,engineering-services,Boulder,,https://salasobrien.com/office-locations/colorado/,2026-11-10,Technology and acoustics office.
 salas-obrien-denver,Salas O'Brien,https://salasobrien.com/,,construction-engineering,building-systems,Lakewood,true,https://salasobrien.com/office-locations/colorado/,2026-11-10,MEP office plus a Lakewood structural office and a Greenwood Village MEP office; RMH Group has joined Salas O'Brien.
 scythe-robotics,Scythe Robotics,https://scytherobotics.com/,,industrial,robotics,Longmont,true,https://scytherobotics.com/contact-us,2026-11-09,Autonomous commercial mowing.
+seagate-longmont,Seagate,https://www.seagate.com/,,semiconductors,fabrication,Longmont,true,https://bizwest.com/2011/09/15/milestones-icon-seagate-technologies,2026-11-16,Disc Drive campus; hard drive product development.
 shift-controls,Shift Controls,https://shift-controls.com/,,industrial,automation-controls,Denver,true,https://shift-controls.com/pages/about-us-6-23-21,2026-11-09,Industrial control panels and systems integration.
 sierra-space,Sierra Space,https://www.sierraspace.com/,,aerospace-defense,space-systems,Louisville,true,https://www.sierraspace.com/contact/,2026-11-09,
 sierra-space-denver,Sierra Space,https://www.sierraspace.com/,,aerospace-defense,space-systems,Centennial,true,https://www.sierraspace.com/press-releases/announcing-sierra-space-defense/,2026-11-09,Victory Works manufacturing facility.
