@@ -1,0 +1,10 @@
+name: Fix something
+description: Report a problem with the validator, the schema, or the docs.
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Description
+      description: What is wrong, and what should it do? For the validator, the command you ran and its output help.
+    validations:
+      required: false
