@@ -365,7 +365,7 @@ def main(argv):
         found, count = check_file(path, columns, nonempty, props, industries, pairs, seen_ids, today, catalog, states)
         if not named or path.resolve() in named:
             problems.extend(found)
-        rows += count
+            rows += count
     named_rel = {p.relative_to(ROOT).as_posix() for p in named if p.is_relative_to(ROOT)}
     for rels, msg in check_repeats(catalog):
         if not named or rels & named_rel:

@@ -1,6 +1,6 @@
 # Rules for agents
 
-This repo is a public dataset of companies by state, one CSV per state. Read `README.md` for the columns and `.github/CONTRIBUTING.md` for how a change lands.
+This repo is a public dataset of companies by state, one CSV per state. Read `README.md` for the columns and `.github/CONTRIBUTING.md` for how a change lands. The columns are also in `schema/company.schema.json`, which `scripts/validate.py` reads, and the allowed `industry` and `field` pairs are in `schema/industries.csv`.
 
 ## Routing
 
